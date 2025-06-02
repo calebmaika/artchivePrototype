@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtChive - A Social Platform for Artists, By Artists</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-palette"></i>
+                <span>ArtChive</span>
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#features">Explore</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#" class="login">Log In</a></li>
+                    <li><a href="#" class="btn btn-secondary">Sign Up</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">A social platform <span>for artists, by artists.</span></h1>
+                <p class="hero-subtext">Join the creative revolution. Showcase your portfolio. Discover others.</p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                    <a href="#" class="btn btn-outline">Browse ArtChive</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Artwork showcase">
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Showcase Carousel Section -->
+    <section class="creative-showcase">
+        <div class="container">
+            <h2 class="section-title">Creative Showcase</h2>
+            <p class="section-subtitle">Explore diverse artistic expressions from our community</p>
+            
+            <div class="art-categories">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All Arts</button>
+                    <button class="tab-btn" data-category="writing">Writing</button>
+                    <button class="tab-btn" data-category="dance">Dance</button>
+                    <button class="tab-btn" data-category="painting">Painting</button>
+                    <button class="tab-btn" data-category="digital">Digital</button>
+                    <button class="tab-btn" data-category="sculpture">Sculpture</button>
+                </div>
+                
+                <div class="art-carousel">
+                    <div class="art-carousel-container">
+                        <!-- Slide 1 (First 3 items) -->
+                        <div class="art-carousel-slide">
+                            <!-- Writing 1 -->
+                            <div class="art-item" data-category="writing">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Writing sample">
+                                    <div class="art-overlay">
+                                        <h3>Poetry Collection</h3>
+                                        <p class="artist-name">By Sarah Lim</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-pen-fancy"></i> Writing
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dance 1 -->
+                            <div class="art-item" data-category="dance">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Dance performance">
+                                    <div class="art-overlay">
+                                        <h3>Urban Movement</h3>
+                                        <p class="artist-name">By Dance Collective XYZ</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-child"></i> Dance
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Painting 1 -->
+                            <div class="art-item" data-category="painting">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Painting">
+                                    <div class="art-overlay">
+                                        <h3>Ocean Memories</h3>
+                                        <p class="artist-name">By Elena Torres</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-paint-brush"></i> Painting
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 (Next 3 items) -->
+                        <div class="art-carousel-slide">
+                            <!-- Digital 1 -->
+                            <div class="art-item" data-category="digital">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Digital art">
+                                    <div class="art-overlay">
+                                        <h3>Neon Dreams</h3>
+                                        <p class="artist-name">By DJ Pixel</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-laptop-code"></i> Digital
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sculpture 1 -->
+                            <div class="art-item" data-category="sculpture">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Sculpture">
+                                    <div class="art-overlay">
+                                        <h3>Clay Reflections</h3>
+                                        <p class="artist-name">By Miguel Santos</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-monument"></i> Sculpture
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Writing 2 -->
+                            <div class="art-item" data-category="writing">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Writing sample">
+                                    <div class="art-overlay">
+                                        <h3>Micro Fiction</h3>
+                                        <p class="artist-name">By James Chen</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-pen-fancy"></i> Writing
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 (Next 3 items) -->
+                        <div class="art-carousel-slide">
+                            <!-- Dance 2 -->
+                            <div class="art-item" data-category="dance">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Dance performance">
+                                    <div class="art-overlay">
+                                        <h3>Ballet Fusion</h3>
+                                        <p class="artist-name">By Lina Park</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-child"></i> Dance
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Painting 2 -->
+                            <div class="art-item" data-category="painting">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Painting">
+                                    <div class="art-overlay">
+                                        <h3>Abstract Emotions</h3>
+                                        <p class="artist-name">By Omar Khalid</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-paint-brush"></i> Painting
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Digital 2 -->
+                            <div class="art-item" data-category="digital">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Digital art">
+                                    <div class="art-overlay">
+                                        <h3>Cyber Landscapes</h3>
+                                        <p class="artist-name">By Maya Chen</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-laptop-code"></i> Digital
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 (Next 3 items) -->
+                        <div class="art-carousel-slide">
+                            <!-- Sculpture 2 -->
+                            <div class="art-item" data-category="sculpture">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Sculpture">
+                                    <div class="art-overlay">
+                                        <h3>Metal Forms</h3>
+                                        <p class="artist-name">By Carlos Mendez</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-monument"></i> Sculpture
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Writing 3 -->
+                            <div class="art-item" data-category="writing">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Writing sample">
+                                    <div class="art-overlay">
+                                        <h3>Short Stories</h3>
+                                        <p class="artist-name">By Priya Patel</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-pen-fancy"></i> Writing
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dance 3 -->
+                            <div class="art-item" data-category="dance">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Dance performance">
+                                    <div class="art-overlay">
+                                        <h3>Contemporary Flow</h3>
+                                        <p class="artist-name">By Dance Troupe A</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-child"></i> Dance
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 5 (Next 3 items) -->
+                        <div class="art-carousel-slide">
+                            <!-- Painting 3 -->
+                            <div class="art-item" data-category="painting">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Painting">
+                                    <div class="art-overlay">
+                                        <h3>Urban Scenes</h3>
+                                        <p class="artist-name">By Jamal Wilson</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-paint-brush"></i> Painting
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Digital 3 -->
+                            <div class="art-item" data-category="digital">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Digital art">
+                                    <div class="art-overlay">
+                                        <h3>Pixel Dreams</h3>
+                                        <p class="artist-name">By Alex Rivera</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-laptop-code"></i> Digital
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sculpture 3 -->
+                            <div class="art-item" data-category="sculpture">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Sculpture">
+                                    <div class="art-overlay">
+                                        <h3>Wooden Forms</h3>
+                                        <p class="artist-name">By Elena Petrov</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-monument"></i> Sculpture
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 6 (Last 3 items) -->
+                        <div class="art-carousel-slide">
+                            <!-- Writing 4 -->
+                            <div class="art-item" data-category="writing">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Writing sample">
+                                    <div class="art-overlay">
+                                        <h3>Novel Excerpt</h3>
+                                        <p class="artist-name">By Thomas Wright</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-pen-fancy"></i> Writing
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dance 4 -->
+                            <div class="art-item" data-category="dance">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Dance performance">
+                                    <div class="art-overlay">
+                                        <h3>Modern Interpretation</h3>
+                                        <p class="artist-name">By Sofia Chen</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-child"></i> Dance
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Painting 4 -->
+                            <div class="art-item" data-category="painting">
+                                <div class="art-image">
+                                    <img src="https://images.unsplash.com/photo-1579762715459-5a068c2a8d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Painting">
+                                    <div class="art-overlay">
+                                        <h3>Still Life</h3>
+                                        <p class="artist-name">By Maria Gonzalez</p>
+                                        <div class="art-type">
+                                            <i class="fas fa-paint-brush"></i> Painting
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="art-carousel-controls">
+                        <button class="art-carousel-btn art-carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <div class="art-carousel-dots"></div>
+                        <button class="art-carousel-btn art-carousel-next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Artists Love ArtChive</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-portrait"></i>
+                    </div>
+                    <h3>Build Your Portfolio</h3>
+                    <p>Showcase your work in a beautiful, customizable portfolio that grows with your career.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Find Collaborators</h3>
+                    <p>Connect with other artists for projects, feedback, and creative partnerships.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Join Discussions</h3>
+                    <p>Participate in vibrant conversations about techniques, trends, and the creative process.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Grow Your Audience</h3>
+                    <p>Get discovered by collectors, galleries, and fellow artists from around the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artists Carousel -->
+    <section class="community" id="community">
+        <div class="container">
+            <h2 class="section-title">Featured Artists</h2>
+            <p class="section-subtitle">What our community members say about ArtChive</p>
+            
+            <div class="artists-carousel">
+                <div class="carousel-container">
+                    <!-- Artist 1 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Artist profile">
+                        </div>
+                        <h3>Marcus Chen</h3>
+                        <p class="specialty">Digital Illustration</p>
+                        <div class="artist-review">
+                            <p class="text-muted">"ArtChive helped me connect with clients I never would have found otherwise. The community feedback has been invaluable for my growth."</p>
+                        </div>
+                        <div class="artist-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Artist 2 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Artist profile">
+                        </div>
+                        <h3>Sophia Rodriguez</h3>
+                        <p class="specialty">Oil Painting</p>
+                        <div class="artist-review">
+                            <p class="text-muted">"As a traditional artist, I was skeptical about online platforms, but ArtChive's community has been incredibly supportive and inspiring."</p>
+                        </div>
+                        <div class="artist-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Artist 3 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Artist profile">
+                        </div>
+                        <h3>Jamal Williams</h3>
+                        <p class="specialty">Street Art</p>
+                        <div class="artist-review">
+                            <p class="text-muted">"The portfolio tools are amazing, but it's the collaborative projects that really make ArtChive special. Found my mural team here!"</p>
+                        </div>
+                        <div class="artist-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Artist 4 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Artist profile">
+                        </div>
+                        <h3>Emma Johnson</h3>
+                        <p class="specialty">Watercolor</p>
+                        <div class="artist-review">
+                            <p class="text-muted">"I've doubled my commissions since joining ArtChive. The exposure to international buyers has been game-changing."</p>
+                        </div>
+                        <div class="artist-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Artist 5 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Artist profile">
+                        </div>
+                        <h3>David Kim</h3>
+                        <p class="specialty">3D Animation</p>
+                        <div class="artist-review">
+                            <p class="text-muted">"The feedback system helped me improve my work dramatically. Plus, I landed my current job through an ArtChive connection!"</p>
+                        </div>
+                        <div class="artist-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Artist 6 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Artist profile">
+                        </div>
+                        <h3>Lena Petrov</h3>
+                        <p class="specialty">Concept Art</p>
+                        <div class="artist-review">
+                            <p class="text-muted">"ArtChive's challenges keep me motivated, and I've made friends with artists from all over the world. Best creative decision I've made."</p>
+                        </div>
+                        <div class="artist-social">
+                            <a href="#"><i class="fab fa-artstation"></i></a>
+                            <a href="#"><i class="fab fa-deviantart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots"></div>
+                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to join the creative community?</h2>
+            <p>ArtChive is free to join and always will be.</p>
+            <a href="#" class="btn btn-light">Join ArtChive Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-palette"></i>
+                        <span>ArtChive</span>
+                    </div>
+                    <p>For artists, by artists. Join the creative revolution.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Examples</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ArtChive. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // GSAP Animations
+        gsap.from('.logo', {duration: 1, y: -50, opacity: 0, ease: 'power2.out'});
+        gsap.from('.nav-links li', {duration: 1, y: -50, opacity: 0, stagger: 0.1, delay: 0.3, ease: 'power2.out'});
+        gsap.from('.hero-title', {duration: 1, y: 50, opacity: 0, delay: 0.5, ease: 'power2.out'});
+        gsap.from('.hero-subtext', {duration: 1, y: 50, opacity: 0, delay: 0.7, ease: 'power2.out'});
+        gsap.from('.hero-cta', {duration: 1, y: 50, opacity: 0, delay: 0.9, ease: 'power2.out'});
+        gsap.from('.hero-image', {duration: 1, x: 50, opacity: 0, delay: 1, ease: 'power2.out'});
+
+        // ScrollMagic animations
+        const controller = new ScrollMagic.Controller();
+
+        // Feature cards animation
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            new ScrollMagic.Scene({
+                triggerElement: card,
+                triggerHook: 0.8,
+                reverse: false
+            })
+            .setTween(gsap.from(card, {duration: 0.5, y: 50, opacity: 0, ease: 'power2.out'}))
+            .addTo(controller);
+        });
+
+        // Artist cards animation
+        document.querySelectorAll('.artist-card').forEach((card, index) => {
+            gsap.from(card, {
+                duration: 0.5,
+                opacity: 0,
+                y: 20,
+                ease: 'power2.out',
+                clearProps: "all" // This ensures GSAP cleans up after itself
+            });
+        });
+
+        // CTA section animation
+        new ScrollMagic.Scene({
+            triggerElement: '.cta',
+            triggerHook: 0.8,
+            reverse: false
+        })
+        .setTween(gsap.from('.cta', {duration: 1, y: 50, opacity: 0, ease: 'power2.out'}))
+        .addTo(controller);
+
+        // Carousel functionality
+        const carousel = document.querySelector('.carousel-container');
+        const cards = document.querySelectorAll('.artist-card');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const dotsContainer = document.querySelector('.carousel-dots');
+
+        let currentIndex = 0;
+        const cardWidth = cards[0].offsetWidth + 30; // width + gap
+
+        // Create dots
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            if (currentIndex < cards.length - 3) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = Math.max(0, cards.length - 3);
+            }
+            updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto-advance carousel
+        let carouselInterval = setInterval(nextSlide, 5000);
+
+        // Pause on hover
+        const carouselWrapper = document.querySelector('.artists-carousel');
+        carouselWrapper.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+
+        carouselWrapper.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Responsive adjustments
+        function handleResize() {
+            const width = window.innerWidth;
+            if (width <= 992) {
+                cardWidth = cards[0].offsetWidth + 30;
+            } else {
+                cardWidth = cards[0].offsetWidth + 30;
+            }
+            updateCarousel();
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        // Initialize ScrollMagic for carousel section
+        new ScrollMagic.Scene({
+            triggerElement: '.community',
+            triggerHook: 0.8,
+            reverse: false
+        })
+        .setTween(gsap.from('.community', {duration: 1, y: 50, opacity: 0, ease: 'power2.out'}))
+        .addTo(controller);
+
+        // Art Category Filtering
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const artistItems = document.querySelectorAll('.art-item');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.dataset.category;
+                
+                // Filter art items
+                artistItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                        // Animate appearance
+                        gsap.from(item, {
+                            duration: 0.5,
+                            opacity: 0,
+                            y: 20,
+                            ease: 'power2.out'
+                        });
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize ScrollMagic for creative showcase section
+        new ScrollMagic.Scene({
+            triggerElement: '.creative-showcase',
+            triggerHook: 0.8,
+            reverse: false
+        })
+        .setTween(gsap.from('.creative-showcase', {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: 'power2.out'
+        }))
+        .addTo(controller);
+
+        // Creative Showcase Carousel and Filtering
+        console.log("Initializing carousel and filtering...");
+
+        const artCarousel = document.querySelector('.art-carousel-container');
+        const artSlides = document.querySelectorAll('.art-carousel-slide');
+        const artPrevBtn = document.querySelector('.art-carousel-prev');
+        const artNextBtn = document.querySelector('.art-carousel-next');
+        const artDotsContainer = document.querySelector('.art-carousel-dots');
+        const tabbButtons = document.querySelectorAll('.tab-btn');
+        const allArtItems = document.querySelectorAll('.art-item');
+
+        console.log(`Found ${artSlides.length} slides and ${allArtItems.length} art items`);
+
+        let artCurrentIndex = 0;
+        let totalSlides = artSlides.length;
+        let activeCategory = 'all';
+
+        // Initialize carousel dots
+        function initializeDots() {
+            console.log(`Initializing dots for ${totalSlides} slides`);
+            artDotsContainer.innerHTML = ''; // Clear existing dots
+            
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('art-carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    console.log(`Dot clicked: ${i}`);
+                    goToArtSlide(i);
+                });
+                artDotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateVisibleSlides() {
+            let visibleSlides = 0;
+            artSlides.forEach((slide, index) => {
+                const visibleItems = Array.from(slide.querySelectorAll('.art-item'))
+                    .filter(item => item.style.display !== 'none');
+                
+                if (visibleItems.length > 0) {
+                    slide.style.display = 'flex';
+                    visibleSlides++;
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+            
+            totalSlides = visibleSlides;
+            initializeDots();
+            artCurrentIndex = Math.min(artCurrentIndex, totalSlides - 1); // Ensure current index is valid
+            updateArtCarousel();
+        }
+
+        // Update carousel based on active category
+        function updateCarouselForCategory(category) {
+            console.log(`Updating carousel for category: ${category}`);
+            activeCategory = category;
+            
+            // First reset all items to default visible state
+            allArtItems.forEach(item => {
+                // Reset all potentially problematic styles
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.visibility = 'visible';
+                item.style.transform = 'none';
+                
+                // Reset GSAP animations if used
+                gsap.killTweensOf(item);
+            });
+
+            // Now filter items
+            allArtItems.forEach(item => {
+                const itemCategory = item.dataset.category;
+                const shouldShow = category === 'all' || itemCategory === category;
+                
+                if (!shouldShow) {
+                    item.style.display = 'none';
+                } else {
+                    // Reset overlay position for visible items
+                    const overlay = item.querySelector('.art-overlay');
+                    if (overlay) {
+                        overlay.style.transform = 'translateY(100%)';
+                    }
+                }
+            });
+
+            // Update visible slides count and dots
+            updateVisibleSlides();
+        }
+
+        function updateArtCarousel() {
+            console.log(`Updating carousel to slide ${artCurrentIndex}`);
+            const slideWidth = 100;
+            const transformValue = -artCurrentIndex * slideWidth;
+            artCarousel.style.transform = `translateX(${transformValue}%)`;
+            
+            // Update dots
+            const artDots = document.querySelectorAll('.art-carousel-dot');
+            artDots.forEach((dot, index) => {
+                const isActive = index === artCurrentIndex;
+                dot.classList.toggle('active', isActive);
+                console.log(`Dot ${index} active: ${isActive}`);
+            });
+        }
+
+        function goToArtSlide(index) {
+            artCurrentIndex = index;
+            updateArtCarousel();
+        }
+
+        function nextArtSlide() {
+            if (artCurrentIndex < totalSlides - 1) {
+                artCurrentIndex++;
+            } else {
+                artCurrentIndex = 0;
+            }
+            updateArtCarousel();
+        }
+
+        function prevArtSlide() {
+            if (artCurrentIndex > 0) {
+                artCurrentIndex--;
+            } else {
+                artCurrentIndex = totalSlides - 1;
+            }
+            updateArtCarousel();
+        }
+
+        // Event listeners
+        artNextBtn.addEventListener('click', nextArtSlide);
+        artPrevBtn.addEventListener('click', prevArtSlide);
+
+        // Auto-advance art carousel
+        let artCarouselInterval = setInterval(nextArtSlide, 5000);
+
+        // Pause on hover
+        const artCarouselWrapper = document.querySelector('.art-carousel');
+        artCarouselWrapper.addEventListener('mouseenter', () => {
+            clearInterval(artCarouselInterval);
+        });
+
+        artCarouselWrapper.addEventListener('mouseleave', () => {
+            artCarouselInterval = setInterval(nextArtSlide, 5000);
+        });
+
+        // Category filtering functionality
+        tabbButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                console.log(`Category button clicked: ${category}`);
+                
+                // Remove active class from all buttons
+                tabbButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    console.log(`Removed active class from ${btn.dataset.category}`);
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                console.log(`Added active class to ${category}`);
+                
+                updateCarouselForCategory(category);
+            });
+        });
+
+        // Debug: Log all artist-card styles
+        function logArtistCardStyles() {
+            console.log("Current artist-card styles:");
+            document.querySelectorAll('.artist-card').forEach((card, index) => {
+                const styles = window.getComputedStyle(card);
+                console.log(`Artist card ${index}:`, {
+                    display: styles.display,
+                    visibility: styles.visibility,
+                    opacity: styles.opacity,
+                    transform: styles.transform,
+                    position: styles.position,
+                    zIndex: styles.zIndex
+                });
+            });
+        }
+
+        // Add event listener to log styles when filtering
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setTimeout(logArtistCardStyles, 100); // Log after the filter is applied
+            });
+        });
+
+        // Initialize with logging
+        console.log("Initializing carousel...");
+        initializeDots();
+        updateCarouselForCategory('all');
+        updateArtCarousel();
+        logArtistCardStyles();
+    </script>
+</body>
+</html>

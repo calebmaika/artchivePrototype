@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | ArtChive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="test_design3.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-palette"></i>
+            <span>ArtChive</span>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search artists, artworks, collectives...">
+        </div>
+        <div class="user-info">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar" class="user-avatar">
+            <div class="user-details">
+                <span class="user-name">Sophia Chen</span>
+                <span class="user-handle">@sophia_art</span>
+                <span class="artist-type">Digital Painter</span>
+            </div>
+        </div>
+        <div class="header-icons">
+            <i class="fas fa-bell" title="Notifications"></i>
+            <i class="fas fa-trophy" title="Arts Leaderboard"></i>
+            <i class="fas fa-question-circle" title="Help"></i>
+            <i class="fas fa-cog" title="Settings"></i>
+        </div>
+    </header>
+
+    <!-- Left Sidebar -->
+    <aside class="left-sidebar">
+        <div class="sidebar-section">
+            <a href="home.html" class="sidebar-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="personal_gallery.html" class="sidebar-link">
+                <i class="fas fa-images"></i>
+                <span>Personal Gallery</span>
+            </a>
+            <a href="museum.html" class="sidebar-link">
+                <i class="fas fa-landmark"></i>
+                <span>Museum</span>
+            </a>
+            <a href="marketplace.html" class="sidebar-link">
+                <i class="fas fa-store"></i>
+                <span>Marketplace</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <a href="artists.html" class="sidebar-link">
+                <i class="fas fa-palette"></i>
+                <span>Artists</span>
+            </a>
+            <a href="collectors.html" class="sidebar-link">
+                <i class="fas fa-heart"></i>
+                <span>Collectors</span>
+            </a>
+            <a href="art-supplies.html" class="sidebar-link">
+                <i class="fas fa-brush"></i>
+                <span>Art Supplies</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <a href="create_post.html" class="sidebar-link">
+                <i class="fas fa-plus-circle"></i>
+                <div>
+                    <span>Create New Post</span>
+                    <span class="subtitle">Share your artwork with the community</span>
+                </div>
+            </a>
+            <a href="join_collectives.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <div>
+                    <span>Join Collectives</span>
+                    <span class="subtitle">Find groups of like-minded artists</span>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Stories -->
+        <div class="stories">
+            <div class="story">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Story" class="story-avatar">
+                <span class="story-name">@alex</span>
+            </div>
+            <div class="story">
+                <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Story" class="story-avatar">
+                <span class="story-name">@maya</span>
+            </div>
+            <div class="story">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Story" class="story-avatar">
+                <span class="story-name">@james</span>
+            </div>
+            <div class="story">
+                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Story" class="story-avatar">
+                <span class="story-name">@emma</span>
+            </div>
+            <div class="story">
+                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Story" class="story-avatar">
+                <span class="story-name">@daniel</span>
+            </div>
+            <div class="story">
+                <img src="https://randomuser.me/api/portraits/women/88.jpg" alt="Story" class="story-avatar">
+                <span class="story-name">@olivia</span>
+            </div>
+        </div>
+
+        <!-- Photo Post with Comments -->
+        <div class="post">
+            <div class="post-header">
+                <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="User Avatar" class="post-avatar">
+                <div class="post-user-info">
+                    <div class="post-user-name">Maya Rodriguez <i class="fas fa-check-circle verified-badge"></i></div>
+                    <div class="post-user-handle">@maya_rodriguez_art</div>
+                    <div class="post-user-type">Oil Painter | Portrait Specialist</div>
+                </div>
+                <div class="post-options">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="post-text">
+                    My latest portrait commission. The play of light on the subject's face was particularly challenging
+                    but rewarding to capture. #portrait #oilpainting #artcommission
+                </div>
+                <div class="post-media">
+                    <img src="https://picsum.photos/800/600?random=2" alt="Artwork" id="commented-photo">
+                    
+                    <!-- Add this link icon button -->
+                    <div class="image-links-toggle">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    
+                    <!-- Add this links container (hidden by default) -->
+                    <div class="image-links-container">
+                        <div class="image-link-header">Buy the rights to download this image!</div>
+                        <a href="#" class="image-link-button">Purchase HD Download ($49)</a>
+                        <div class="image-link-spacer"></div>
+                        <a href="#" class="image-link-button">License for Commercial Use ($199)</a>
+                    </div>
+                    
+                    <!-- Existing comment markers and tooltips -->
+                    <div class="photo-comment-marker" style="top: 30%; left: 25%;" data-comment="comment1"></div>
+                    <div class="photo-comment-marker" style="top: 50%; left: 70%;" data-comment="comment2"></div>
+                    
+                    <div class="photo-comment-tooltip" id="comment1">
+                        <div class="comment-user">Alex Turner <i class="fas fa-check-circle verified-badge"></i></div>
+                        <div class="comment-text">The brushwork in the eyes is exceptional. Reminds me of Rembrandt's technique.</div>
+                        <div class="comment-time">2 hours ago</div>
+                    </div>
+                    <div class="photo-comment-tooltip" id="comment2">
+                        <div class="comment-user">Sophia Chen <i class="fas fa-check-circle verified-badge"></i></div>
+                        <div class="comment-text">The texture in the fabric is so realistic! What medium did you use for this part?</div>
+                        <div class="comment-time">1 hour ago</div>
+                    </div>
+                </div>
+            </div>
+            <div class="post-actions">
+                <div class="post-action">
+                    <i class="far fa-heart"></i>
+                    <span>187</span>
+                </div>
+                <div class="post-action">
+                    <i class="far fa-comment"></i>
+                    <span>32</span>
+                </div>
+                <div class="post-action">
+                    <i class="fas fa-star"></i>
+                    <span>7 critiques</span>
+                </div>
+                <div class="post-action">
+                    <i class="fas fa-share"></i>
+                    <span>Share</span>
+                </div>
+            </div>
+            <div class="comments-section">
+                <div class="critique">
+                    <div class="critique-vote-column">
+                        <div class="vote-container">
+                            <i class="fas fa-arrow-up vote-icon upvote"></i>
+                            <span class="vote-count">22</span>
+                            <i class="fas fa-arrow-down vote-icon downvote"></i>
+                        </div>
+                        <div class="action-icons">
+                            <i class="far fa-bookmark action-icon" title="Bookmark"></i>
+                            <i class="far fa-flag action-icon" title="Report"></i>
+                            <i class="far fa-trash-alt action-icon" title="Delete"></i>
+                        </div>
+                    </div>
+                    <div class="critique-content-column">
+                        <div class="critique-text">
+                            Your composition demonstrates a strong understanding of emotional storytelling through music.
+                            The instrumentation choices effectively convey the protagonist's internal journey, particularly
+                            in the way you've layered the strings with the piano. The climax at 2:45 is powerful, though I
+                            might suggest experimenting with a slightly slower tempo build-up to heighten the tension even
+                            further. The woodwind countermelodies are a lovely touch that adds depth to the arrangement.
+                        </div>
+                        
+                        <div class="critique-author-container">
+                            <div class="critique-author-box">
+                                <div class="critique-meta">Critiqued 5 hours ago</div>
+                                <div class="author-info">
+                                    <img src="https://randomuser.me/api/portraits/women/88.jpg" alt="Critic" class="author-avatar">
+                                    <div class="author-details">
+                                        <div class="author-name">
+                                            Olivia Martinez
+                                            <i class="fas fa-check-circle verified-badge"></i>
+                                        </div>
+                                        <div class="author-meta">
+                                            <span class="artist-type">Composer</span> | 
+                                            <span class="artist-kind">Film Scores</span>
+                                        </div>
+                                        <div class="author-badges">
+                                            <span class="badge">Top Critic</span>
+                                            <span class="badge drops-count">
+                                                <i class="fas fa-tint drop-icon"></i> 47k
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-form">
+                            <textarea placeholder="Add a comment..." class="comment-input"></textarea>
+                        </div>
+                        
+                        <div class="critique-comments">
+                            <div class="comment">
+                                <span class="comment-author">Alex Turner</span>
+                                <i class="fas fa-check-circle verified-badge"></i>
+                                <span class="comment-meta">
+                                    <span class="artist-type">Illustrator</span> | 
+                                    <span class="artist-kind">Digital Art</span> • 
+                                    <span class="comment-time">2 hours ago —</span>
+                                </span>
+                                <span class="comment-text">The string section at 0:45 is hauntingly beautiful. Reminds me of some of Thomas Newman's work.</span>
+                            </div>
+                            
+                            <div class="comment">
+                                <span class="comment-author">Sophia Chen</span>
+                                <i class="fas fa-check-circle verified-badge"></i>
+                                <span class="comment-meta">
+                                    <span class="artist-type">Digital Painter</span> | 
+                                    <span class="artist-kind">Concept Art</span> • 
+                                    <span class="comment-time">1 hour ago —</span>
+                                </span>
+                                <span class="comment-text">I agree with your point about the tempo build-up. A more gradual approach could make the climax even more impactful.</span>
+                            </div>
+                            
+                            <div class="comment">
+                                <span class="comment-author">James Peterson</span>
+                                <span class="comment-meta">
+                                    <span class="artist-type">Photographer</span> | 
+                                    <span class="artist-kind">Fine Art</span> • 
+                                    <span class="comment-time">45 minutes ago —</span>
+                                </span>
+                                <span class="comment-text">The woodwind countermelodies are indeed a highlight. They add such depth to the emotional texture.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Novel Post with Highlights -->
+        <div class="post">
+            <div class="post-header">
+                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="User Avatar" class="post-avatar">
+                <div class="post-user-info">
+                    <div class="post-user-name">Emma Wilson <i class="fas fa-check-circle verified-badge"></i></div>
+                    <div class="post-user-handle">@emma_writes</div>
+                    <div class="post-user-type">Novelist | Mystery & Thriller</div>
+                </div>
+                <div class="post-options">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="post-text">
+                    Sharing Chapter 3 of my ongoing serial novel "Whispers in the Dark". This chapter introduces the
+                    mysterious antagonist. Would love your thoughts on the character development!
+                </div>
+                <div class="novel-container">
+                    <div class="novel-pages">
+                        <div class="novel-page">
+                            <h3>Chapter 3: The Shadow</h3>
+                            <p>Detective Clara Moore stood in the abandoned warehouse, her breath visible in the cold
+                                air. The note had led her here—another cryptic message in the same elegant script. <span
+                                    class="highlight" data-comment="highlight1">"You're getting warmer, detective. But
+                                    can you handle the truth when it burns?"</span></p>
+
+                            <p>Her flashlight beam cut through the darkness, revealing strange symbols painted on the
+                                walls. They matched the ones from the cold case files back at the station—the ones
+                                marked "unsolved." <span class="highlight" data-comment="highlight2">A chill ran down
+                                    her spine that had nothing to do with the winter air.</span></p>
+
+                            <p>Then she heard it—a whisper so faint she thought she imagined it. But it came again,
+                                clearer this time: <span class="highlight" data-comment="highlight3">"Clara... you
+                                    should have stopped looking."</span></p>
+
+                            <p>She spun around, her service weapon drawn, but the warehouse was empty. Except for one
+                                thing—a single playing card placed carefully on the floor. The queen of hearts, with a
+                                drop of what looked like blood staining the corner.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-comment" id="highlight1">
+                        <div class="comment-user">James Peterson <i class="fas fa-check-circle verified-badge"></i>
+                        </div>
+                        <div class="comment-text">Excellent antagonist introduction. The taunting tone comes through
+                            clearly here.</div>
+                        <div class="comment-time">1 day ago</div>
+                    </div>
+                    <div class="highlight-comment" id="highlight2">
+                        <div class="comment-user">Sophia Chen <i class="fas fa-check-circle verified-badge"></i></div>
+                        <div class="comment-text">Great sensory detail that connects the physical and emotional states.
+                        </div>
+                        <div class="comment-time">12 hours ago</div>
+                    </div>
+                    <div class="highlight-comment" id="highlight3">
+                        <div class="comment-user">Daniel Kim <i class="fas fa-check-circle verified-badge"></i></div>
+                        <div class="comment-text">This direct address to the protagonist is chilling. Very effective!
+                        </div>
+                        <div class="comment-time">8 hours ago</div>
+                    </div>
+                    <div class="novel-nav">
+                        <button class="prev-page">Previous Chapter</button>
+                        <button class="next-page">Next Chapter</button>
+                    </div>
+                    <div class="novel-tools">
+                        <div class="novel-tool">Bookmark</div>
+                        <div class="novel-tool">Highlight</div>
+                        <div class="novel-tool">Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="post-actions">
+                <div class="post-action">
+                    <i class="far fa-heart"></i>
+                    <span>112</span>
+                </div>
+                <div class="post-action">
+                    <i class="fas fa-comment"></i>
+                    <span>24</span>
+                </div>
+                <div class="post-action">
+                    <i class="far fa-star"></i>
+                    <span>5 critiques</span>
+                </div>
+                <div class="post-action">
+                    <i class="fas fa-share"></i>
+                    <span>Share</span>
+                </div>
+            </div>
+            <div class="comments-section">
+                <div class="comment-form">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar"
+                        class="comment-avatar">
+                    <textarea class="comment-input" placeholder="Add a comment..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Post with Comments -->
+        <div class="post">
+            <div class="post-header">
+                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="User Avatar" class="post-avatar">
+                <div class="post-user-info">
+                    <div class="post-user-name">Daniel Kim <i class="fas fa-check-circle verified-badge"></i></div>
+                    <div class="post-user-handle">@danielkim_music</div>
+                    <div class="post-user-type">Composer | Film Scores</div>
+                </div>
+                <div class="post-options">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="post-text">
+                    My latest composition for an indie film project. This piece accompanies the protagonist's emotional
+                    climax. Would love to hear your thoughts on the instrumentation choices!
+                </div>
+                <div class="post-media video-container">
+                    <video controls width="100%">
+                        <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <!-- Actions within video -->
+                    <div class="video-actions">
+                        <!-- Comments toggle (left side) -->
+                        <div class="comments-toggle">
+                            <i class="fa-solid fa-comment-dots"></i>
+                        </div>
+                        
+                        <!-- Links toggle (right side) -->
+                        <div class="video-links-toggle">
+                            <i class="fas fa-link"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Video links container -->
+                    <div class="video-links-container">
+                        <div class="image-link-header">Buy the rights to this video!</div>
+                        <a href="#" class="image-link-button">Purchase HD Download ($79)</a>
+                        <div class="image-link-spacer"></div>
+                        <a href="#" class="image-link-button">License for Commercial Use ($299)</a>
+                    </div>
+                    
+                    <!-- Video comments sidebar -->
+                    <div class="video-comments-sidebar">
+                        <div class="sidebar-title">Barrage Comments</div>
+                        <div class="comment">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar" class="comment-avatar">
+                            <div class="comment-content">
+                                <div class="comment-user">Sophia Chen <i class="fas fa-check-circle verified-badge"></i></div>
+                                <div class="comment-text">The string section at 0:45 is hauntingly beautiful</div>
+                                <div class="comment-time">00:45</div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar" class="comment-avatar">
+                            <div class="comment-content">
+                                <div class="comment-user">Alex Turner <i class="fas fa-check-circle verified-badge"></i></div>
+                                <div class="comment-text">The transition at 1:30 could use more build-up</div>
+                                <div class="comment-time">01:30</div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="User Avatar" class="comment-avatar">
+                            <div class="comment-content">
+                                <div class="comment-user">Emma Wilson <i class="fas fa-check-circle verified-badge"></i></div>
+                                <div class="comment-text">The piano motif is brilliant - reminds me of Yann Tiersen's work</div>
+                                <div class="comment-time">02:15</div>
+                            </div>
+                        </div>
+                        <div class="comment-form">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar" class="comment-avatar">
+                            <textarea class="comment-input" placeholder="Add a barrage comment..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="post-actions">
+                <div class="post-action">
+                    <i class="fas fa-heart" style="color: red;"></i>
+                    <span>245</span>
+                </div>
+                <div class="post-action">
+                    <i class="fas fa-comment"></i>
+                    <span>42</span>
+                </div>
+                <div class="post-action">
+                    <i class="far fa-star"></i>
+                    <span>9 critiques</span>
+                </div>
+                <div class="post-action">
+                    <i class="fas fa-share"></i>
+                    <span>Share</span>
+                </div>
+            </div>
+            <div class="comments-section">
+                <div class="comment-form">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar"
+                        class="comment-avatar">
+                    <textarea class="comment-input" placeholder="Add a comment..."></textarea>
+                </div>
+                <div class="comment">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User Avatar" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-user">James Peterson <i class="fas fa-check-circle verified-badge"></i>
+                        </div>
+                        <div class="comment-text">The use of silence before the climax was masterful. Really makes the
+                            payoff hit harder.</div>
+                        <div class="comment-actions">
+                            <span class="comment-action">Like</span>
+                            <span class="comment-action">Reply</span>
+                            <span>3h ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+        <div class="popular-posts">
+            <div class="sidebar-title">Popular This Week</div>
+            <div class="post-carousel">
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Popular Post">
+                    <div class="post-info">
+                        <div class="post-title">Abstract Watercolor Series</div>
+                        <div class="post-author">By @maria_art</div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/300/200?random=4" alt="Popular Post">
+                    <div class="post-info">
+                        <div class="post-title">Ceramic Workshop Highlights</div>
+                        <div class="post-author">By @ceramic_john</div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/300/200?random=5" alt="Popular Post">
+                    <div class="post-info">
+                        <div class="post-title">Street Photography: Urban Life</div>
+                        <div class="post-author">By @lens_artist</div>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="prev-post"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-post"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-space">
+            <div>Advertisement</div>
+        </div>
+
+        <div class="active-fellows">
+            <div class="sidebar-title">Active Fellows</div>
+            <div class="fellow-item">
+                <div class="fellow-avatar-container">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Fellow" class="fellow-avatar">
+                    <div class="online-dot"></div>
+                </div>
+                <div class="fellow-info">
+                    <div class="fellow-name">Lisa Wong</div>
+                    <div class="fellow-type">Illustrator | Digital Art</div>
+                </div>
+            </div>
+            <div class="fellow-item">
+                <div class="fellow-avatar-container">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Fellow" class="fellow-avatar">
+                    <div class="online-dot"></div>
+                </div>
+                <div class="fellow-info">
+                    <div class="fellow-name">Michael Brown</div>
+                    <div class="fellow-type">Photographer | Fine Art</div>
+                </div>
+            </div>
+            <div class="fellow-item">
+                <div class="fellow-avatar-container">
+                    <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Fellow" class="fellow-avatar">
+                    <div class="online-dot"></div>
+                </div>
+                <div class="fellow-info">
+                    <div class="fellow-name">Sarah Johnson</div>
+                    <div class="fellow-type">Sculptor | Mixed Media</div>
+                </div>
+            </div>
+            <div class="fellow-item">
+                <div class="fellow-avatar-container">
+                    <img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Fellow" class="fellow-avatar">
+                    <div class="online-dot"></div>
+                </div>
+                <div class="fellow-info">
+                    <div class="fellow-name">David Lee</div>
+                    <div class="fellow-type">Graphic Designer | Typography</div>
+                </div>
+            </div>
+            <div class="fellow-item">
+                <div class="fellow-avatar-container">
+                    <img src="https://randomuser.me/api/portraits/women/66.jpg" alt="Fellow" class="fellow-avatar">
+                    <div class="online-dot"></div>
+                </div>
+                <div class="fellow-info">
+                    <div class="fellow-name">Anna Garcia</div>
+                    <div class="fellow-type">Painter | Abstract</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Story Modal -->
+    <div class="modal" id="storyModal">
+        <div class="modal-content">
+            <div class="story-container">
+                <div class="story-header-overlay">
+                    <!-- Story progress bars -->
+                    <div class="story-progress">
+                        <div class="story-progress-bar">
+                            <div class="story-progress-fill" style="width: 50%"></div>
+                        </div>
+                        <div class="story-progress-bar">
+                            <div class="story-progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story header -->
+                    <div class="modal-story-header">
+                        <div class="story-user">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="story-avatar">
+                            <div class="story-user-info">
+                                <div class="story-username">Alex Turner</div>
+                                <div class="story-details">@alex_turner_art • Fine Artist • 2h ago</div>
+                            </div>
+                        </div>
+                        <div class="story-actions">
+                            <i class="fas fa-pause story-action-icon"></i>
+                            <i class="fas fa-ellipsis-h story-action-icon"></i>
+                            <i class="fas fa-times story-action-icon modal-close"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story content -->
+                <div class="story-content">
+                    <img src="https://picsum.photos/500/800?random=6" alt="Story" class="story-image">
+                </div>
+                
+                <!-- Story footer -->
+                <div class="story-footer">
+                    <div class="story-interaction">
+                        <input type="text" placeholder="Send message" class="story-comment-input">
+                        <div class="story-reactions">
+                            <i class="far fa-heart story-reaction-icon"></i>
+                            <i class="far fa-paper-plane story-reaction-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Photo comment markers functionality
+        document.querySelectorAll('.photo-comment-marker').forEach(marker => {
+            marker.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent event from bubbling up
+                const commentId = this.getAttribute('data-comment');
+                const tooltip = document.getElementById(commentId);
+    
+                // Hide all other tooltips first
+                document.querySelectorAll('.photo-comment-tooltip').forEach(t => {
+                    t.style.display = 'none';
+                });
+    
+                // Hide image links container if open
+                document.querySelector('.image-links-container').classList.remove('show');
+    
+                // Position and show this tooltip
+                tooltip.style.display = 'block';
+                tooltip.style.left = this.style.left;
+                tooltip.style.top = `calc(${this.style.top} + 20px)`;
+    
+                // Close tooltip when clicking anywhere else
+                const closeTooltip = function(e) {
+                    if (!tooltip.contains(e.target) && e.target !== marker) {
+                        tooltip.style.display = 'none';
+                        document.removeEventListener('click', closeTooltip);
+                    }
+                };
+                document.addEventListener('click', closeTooltip);
+            });
+        });
+    
+        // Image links toggle functionality
+        document.querySelector('.image-links-toggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const container = document.querySelector('.image-links-container');
+            container.classList.toggle('show');
+            
+            // Hide any visible comment tooltips
+            document.querySelectorAll('.photo-comment-tooltip').forEach(t => {
+                t.style.display = 'none';
+            });
+        });
+    
+        // Close image links when clicking anywhere else
+        document.addEventListener('click', function() {
+            document.querySelector('.image-links-container').classList.remove('show');
+        });
+    
+        // Prevent clicks inside the container from closing it
+        document.querySelector('.image-links-container').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    
+        /* Rest of your existing script remains the same */
+        // Novel highlights functionality
+        document.querySelectorAll('.highlight').forEach(highlight => {
+            highlight.addEventListener('click', function() {
+                const commentId = this.getAttribute('data-comment');
+                const tooltip = document.getElementById(commentId);
+                
+                document.querySelectorAll('.highlight-comment').forEach(t => {
+                    t.style.display = 'none';
+                });
+                
+                tooltip.style.display = 'block';
+                tooltip.style.left = '0';
+                tooltip.style.top = '100%';
+                
+                document.addEventListener('click', function closeTooltip(e) {
+                    if (!tooltip.contains(e.target) && !highlight.contains(e.target)) {
+                        tooltip.style.display = 'none';
+                        document.removeEventListener('click', closeTooltip);
+                    }
+                });
+            });
+        });
+    
+       // Comments toggle functionality
+        const commentsToggle = document.querySelector('.comments-toggle');
+        const commentsSidebar = document.querySelector('.video-comments-sidebar');
+        
+        commentsToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            commentsSidebar.classList.toggle('show');
+        });
+        
+        // Links toggle functionality
+        const linksToggle = document.querySelector('.video-links-toggle');
+        const linksContainer = document.querySelector('.video-links-container');
+        
+        linksToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            linksContainer.classList.toggle('show');
+        });
+        
+        // Close all when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!commentsSidebar.contains(e.target) && e.target !== commentsToggle) {
+                commentsSidebar.classList.remove('show');
+            }
+            if (!linksContainer.contains(e.target) && e.target !== linksToggle) {
+                linksContainer.classList.remove('show');
+            }
+        });
+        
+        // Prevent clicks inside from closing
+        commentsSidebar.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        linksContainer.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Upvote/downvote interaction
+        document.querySelectorAll('.vote-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+              const isUpvote = this.classList.contains('upvote');
+              const voteCount = this.parentElement.querySelector('.vote-count');
+              let count = parseInt(voteCount.textContent);
+              
+              // Toggle active state
+              this.classList.toggle('active');
+              
+              // Update count
+              if (this.classList.contains('active')) {
+                count += isUpvote ? 1 : -1;
+              } else {
+                count += isUpvote ? -1 : 1;
+              }
+              
+              voteCount.textContent = count;
+              
+              // Highlight count change
+              voteCount.classList.add('changed');
+              setTimeout(() => voteCount.classList.remove('changed'), 1000);
+              
+              // Remove active state from opposite button
+              const oppositeBtn = isUpvote 
+                ? this.parentElement.querySelector('.downvote')
+                : this.parentElement.querySelector('.upvote');
+              oppositeBtn.classList.remove('active');
+            });
+          });
+    
+        // Story modal functionality
+        document.querySelectorAll('.story').forEach(story => {
+            story.addEventListener('click', function() {
+                document.getElementById('storyModal').style.display = 'flex';
+            });
+        });
+    
+        document.querySelector('.modal-close').addEventListener('click', function() {
+            document.getElementById('storyModal').style.display = 'none';
+        });
+    
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('storyModal')) {
+                document.getElementById('storyModal').style.display = 'none';
+            }
+        });
+    
+        // Simple carousel navigation for popular posts
+        let currentPost = 0;
+        const posts = document.querySelectorAll('.carousel-item');
+        
+        function showPost(index) {
+            posts.forEach((post, i) => {
+                post.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        
+        document.querySelector('.prev-post').addEventListener('click', function() {
+            currentPost = (currentPost - 1 + posts.length) % posts.length;
+            showPost(currentPost);
+        });
+        
+        document.querySelector('.next-post').addEventListener('click', function() {
+            currentPost = (currentPost + 1) % posts.length;
+            showPost(currentPost);
+        });
+        
+        
+        showPost(0);
+    </script>
+</body>
+
+</html>
