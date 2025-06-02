@@ -38,59 +38,166 @@
     <!-- Left Sidebar -->
     <aside class="left-sidebar">
         <div class="sidebar-section">
+            <a href="profile.html" class="sidebar-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
             <a href="home.html" class="sidebar-link">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
-            <a href="personal_gallery.html" class="sidebar-link">
+            <a href="gallery.html" class="sidebar-link">
                 <i class="fas fa-images"></i>
-                <span>Personal Gallery</span>
+                <span>Gallery</span>
             </a>
-            <a href="museum.html" class="sidebar-link">
-                <i class="fas fa-landmark"></i>
-                <span>Museum</span>
+            <a href="collectives.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <span>Collectives</span>
             </a>
-            <a href="marketplace.html" class="sidebar-link">
-                <i class="fas fa-store"></i>
-                <span>Marketplace</span>
-            </a>
-        </div>
-
-        <div class="sidebar-section">
-            <a href="artists.html" class="sidebar-link">
-                <i class="fas fa-palette"></i>
-                <span>Artists</span>
-            </a>
-            <a href="collectors.html" class="sidebar-link">
-                <i class="fas fa-heart"></i>
-                <span>Collectors</span>
-            </a>
-            <a href="art-supplies.html" class="sidebar-link">
-                <i class="fas fa-brush"></i>
-                <span>Art Supplies</span>
-            </a>
-        </div>
-
-        <div class="sidebar-section">
             <a href="create_post.html" class="sidebar-link">
                 <i class="fas fa-plus-circle"></i>
                 <div>
-                    <span>Create New Post</span>
+                    <span>Create Post</span>
                     <span class="subtitle">Share your artwork with the community</span>
                 </div>
             </a>
-            <a href="join_collectives.html" class="sidebar-link">
-                <i class="fas fa-users"></i>
-                <div>
-                    <span>Join Collectives</span>
-                    <span class="subtitle">Find groups of like-minded artists</span>
-                </div>
-            </a>
         </div>
+
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
+        <!-- Collectives Section -->
+        <div class="collectives-section">
+            <div class="section-header">
+                <h2>Collectives</h2>
+                <div class="section-tabs">
+                    <button class="tab-btn active">Joined</button>
+                    <button class="tab-btn">Suggested</button>
+                </div>
+            </div>
+
+            <!-- Joined Collectives -->
+            <div class="collectives-grid">
+                <div class="collective-card">
+                    <div class="collective-header">
+                        <img src="https://picsum.photos/100/100?random=1" alt="Collective" class="collective-avatar">
+                        <div class="collective-info">
+                            <div class="collective-name">Digital Artists United</div>
+                            <div class="collective-members">1.2k members</div>
+                            <div class="collective-tags">
+                                <span class="tag">Digital Art</span>
+                                <span class="tag">Character Design</span>
+                            </div>
+                        </div>
+                        <div class="collective-status online">
+                            <i class="fas fa-circle"></i> 45 Online
+                        </div>
+                    </div>
+                    <div class="collective-preview">
+                        <div class="preview-message">
+                            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="User" class="message-avatar">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-author">Maya Rodriguez</span>
+                                    <span class="message-time">2m ago</span>
+                                </div>
+                                <p>Just finished this new character design! Would love some feedback...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collective-actions">
+                        <button class="action-btn"><i class="fas fa-comments"></i> Chat</button>
+                        <button class="action-btn"><i class="fas fa-video"></i> Join Call</button>
+                    </div>
+                </div>
+
+                <div class="collective-card">
+                    <div class="collective-header">
+                        <img src="https://picsum.photos/100/100?random=2" alt="Collective" class="collective-avatar">
+                        <div class="collective-info">
+                            <div class="collective-name">Concept Artists Guild</div>
+                            <div class="collective-members">856 members</div>
+                            <div class="collective-tags">
+                                <span class="tag">Concept Art</span>
+                                <span class="tag">World Building</span>
+                            </div>
+                        </div>
+                        <div class="collective-status online">
+                            <i class="fas fa-circle"></i> 28 Online
+                        </div>
+                    </div>
+                    <div class="collective-preview">
+                        <div class="preview-message">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="message-avatar">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-author">Alex Turner</span>
+                                    <span class="message-time">5m ago</span>
+                                </div>
+                                <p>Working on a new world map. Anyone want to collaborate?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collective-actions">
+                        <button class="action-btn"><i class="fas fa-comments"></i> Chat</button>
+                        <button class="action-btn"><i class="fas fa-video"></i> Join Call</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggested Collectives -->
+            <div class="suggested-collectives" style="display: none;">
+                <div class="collectives-grid">
+                    <div class="collective-card">
+                        <div class="collective-header">
+                            <img src="https://picsum.photos/100/100?random=3" alt="Collective" class="collective-avatar">
+                            <div class="collective-info">
+                                <div class="collective-name">3D Artists Network</div>
+                                <div class="collective-members">1.5k members</div>
+                                <div class="collective-tags">
+                                    <span class="tag">3D Modeling</span>
+                                    <span class="tag">Animation</span>
+                                </div>
+                            </div>
+                            <div class="collective-status online">
+                                <i class="fas fa-circle"></i> 62 Online
+                            </div>
+                        </div>
+                        <div class="collective-description">
+                            A community of 3D artists sharing techniques, resources, and supporting each other's growth.
+                        </div>
+                        <div class="collective-actions">
+                            <button class="action-btn join-btn"><i class="fas fa-plus"></i> Join Collective</button>
+                        </div>
+                    </div>
+
+                    <div class="collective-card">
+                        <div class="collective-header">
+                            <img src="https://picsum.photos/100/100?random=4" alt="Collective" class="collective-avatar">
+                            <div class="collective-info">
+                                <div class="collective-name">Pixel Art Masters</div>
+                                <div class="collective-members">723 members</div>
+                                <div class="collective-tags">
+                                    <span class="tag">Pixel Art</span>
+                                    <span class="tag">Game Art</span>
+                                </div>
+                            </div>
+                            <div class="collective-status online">
+                                <i class="fas fa-circle"></i> 35 Online
+                            </div>
+                        </div>
+                        <div class="collective-description">
+                            Dedicated to pixel art and game art creation. Weekly challenges and tutorials.
+                        </div>
+                        <div class="collective-actions">
+                            <button class="action-btn join-btn"><i class="fas fa-plus"></i> Join Collective</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Stories -->
         <div class="stories">
             <div class="story">
@@ -639,7 +746,239 @@
         </div>
     </div>
 
+    <style>
+        .collectives-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .section-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #1a73e8;
+            color: white;
+            border-color: #1a73e8;
+        }
+
+        .collectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .collective-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .collective-header {
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .collective-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .collective-info {
+            flex: 1;
+        }
+
+        .collective-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .collective-members {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .collective-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .collective-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .collective-status.online i {
+            color: #4CAF50;
+            font-size: 10px;
+        }
+
+        .collective-preview {
+            padding: 15px;
+            background: #f8f9fa;
+        }
+
+        .preview-message {
+            display: flex;
+            gap: 10px;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .message-author {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .message-time {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .message-content p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .collective-description {
+            padding: 15px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .collective-actions {
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #333;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #f0f0f0;
+            border-color: #ccc;
+        }
+
+        .action-btn i {
+            color: #1a73e8;
+        }
+
+        .join-btn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+        }
+
+        .join-btn:hover {
+            background: #1557b0;
+        }
+
+        .join-btn i {
+            color: white;
+        }
+    </style>
+
     <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show/hide appropriate content
+                const isJoined = this.textContent === 'Joined';
+                document.querySelector('.collectives-grid').style.display = isJoined ? 'grid' : 'none';
+                document.querySelector('.suggested-collectives').style.display = isJoined ? 'none' : 'block';
+            });
+        });
+
+        // Join collective button functionality
+        document.querySelectorAll('.join-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const collective = this.closest('.collective-card').querySelector('.collective-name').textContent;
+                alert(`Joining ${collective}...`);
+            });
+        });
+
         // Photo comment markers functionality
         document.querySelectorAll('.photo-comment-marker').forEach(marker => {
             marker.addEventListener('click', function(e) {
