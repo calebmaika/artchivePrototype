@@ -70,8 +70,10 @@ loopFellowsData.forEach((fellow, index) => {
   fellowCard.dataset.index = index;
   fellowCard.innerHTML = `
     <img src="${fellow.image}" alt="Fellow's gallery" class="fellow-image">
-    <img src="${fellow.avatar}" alt="Fellow's avatar" class="fellow-avatar">
+    <div class="avatar-container">
+      <img src="${fellow.avatar}" alt="Fellow's avatar" class="fellow-avatar">
     ${fellow.online ? '<div class="online-dot"></div>' : ""}
+    </div>
   `;
   fellowsContainer.appendChild(fellowCard);
 });
