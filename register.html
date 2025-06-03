@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtChive - Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #e5e7eb;
+        }
+        
+        .form-container {
+            width: 100%;
+            max-width: 42rem;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #6a5acd;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .progress-step {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .progress-connector {
+            width: 3rem;
+            height: 0.25rem;
+        }
+        
+        .artist-card {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .artist-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .artist-card:active {
+            transform: scale(0.97);
+        }
+        
+        .artist-card.selected {
+            box-shadow: 0 0 0 2px #6a5acd;
+        }
+        
+        .artist-image {
+            position: relative;
+            height: 6rem;
+        }
+        
+        .artist-check {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #6a5acd;
+            color: white;
+            border-radius: 9999px;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        input:focus {
+            outline: 2px solid #6a5acd;
+            outline-offset: 0;
+            box-shadow: 0 0 0 4px rgba(106, 90, 205, 0.2);
+            border-color: transparent;
+        }
+        
+        .error-message {
+            font-size: 0.875rem;
+            color: #f87171;
+        }
+        
+        .btn-primary {
+            background-color: #6a5acd;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5a4ab5;
+        }
+        
+        .btn-success {
+            background-color: #10b981;
+            color: white;
+            border: none;
+        }
+        
+        .btn-success:hover {
+            background-color: #0d9f6e;
+        }
+        
+        .input-error {
+            border-color: #f87171;
+        }
+        
+        .badge-primary {
+            background-color: #6a5acd;
+            color: white;
+            text-transform: capitalize;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.3s ease-in-out;
+        }
+        
+        .slide-out-left {
+            animation: slideOutLeft 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideOutLeft {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(-50px); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4" data-theme="light">
+    <div class="form-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="flex items-center justify-center gap-3 mb-2">
+                <img src="https://via.placeholder.com/40" alt="ArtChive icon" class="w-10 h-10 rounded-lg">
+                <h1 class="text-3xl font-bold">ArtChive</h1>
+            </div>
+            <div id="step-title">
+                <p class="text-lg">Create your account</p>
+            </div>
+        </div>
+
+        <!-- Progress indicator -->
+        <div class="flex justify-center p-4">
+            <div class="flex items-center">
+                <div class="flex items-center">
+                    <div class="progress-step bg-primary text-white">1</div>
+                    <div class="progress-connector bg-gray-300"></div>
+                </div>
+                <div class="flex items-center">
+                    <div class="progress-step bg-gray-300">2</div>
+                    <div class="progress-connector bg-gray-300"></div>
+                </div>
+                <div class="flex items-center">
+                    <div class="progress-step bg-gray-300">3</div>
+                    <div class="progress-connector bg-gray-300"></div>
+                </div>
+                <div class="flex items-center">
+                    <div class="progress-step bg-gray-300">4</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form content -->
+        <form id="registration-form" class="p-6">
+            <!-- Step 1: Account Information -->
+            <div id="step-1" class="space-y-4">
+                <p class="text-center mb-6 opacity-80">Start your creative journey by creating your account</p>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text flex items-center gap-2">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </span>
+                    </label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" class="input input-bordered w-full">
+                    <p id="username-error" class="error-message mt-1 hidden"></p>
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text flex items-center gap-2">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </span>
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" class="input input-bordered w-full">
+                    <p id="email-error" class="error-message mt-1 hidden"></p>
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text flex items-center gap-2">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </span>
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" class="input input-bordered w-full">
+                    <p id="password-error" class="error-message mt-1 hidden"></p>
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text flex items-center gap-2">
+                            <i class="fas fa-lock"></i>
+                            Confirm Password
+                        </span>
+                    </label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" class="input input-bordered w-full">
+                    <p id="confirmPassword-error" class="error-message mt-1 hidden"></p>
+                </div>
+            </div>
+
+            <!-- Step 2: Personal Information -->
+            <div id="step-2" class="space-y-4 hidden">
+                <p class="text-center mb-6 opacity-80">Tell us a bit more about yourself (optional)</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text flex items-center gap-2">
+                                <i class="fas fa-user-tag"></i>
+                                First Name
+                            </span>
+                        </label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Your first name" class="input input-bordered w-full">
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text flex items-center gap-2">
+                                <i class="fas fa-user-tag"></i>
+                                Middle Name
+                            </span>
+                        </label>
+                        <input type="text" id="middleName" name="middleName" placeholder="Your middle name" class="input input-bordered w-full">
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text flex items-center gap-2">
+                                <i class="fas fa-user-tag"></i>
+                                Last Name
+                            </span>
+                        </label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Your last name" class="input input-bordered w-full">
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text flex items-center gap-2">
+                                <i class="fas fa-city"></i>
+                                City
+                            </span>
+                        </label>
+                        <input type="text" id="city" name="city" placeholder="Your city" class="input input-bordered w-full">
+                    </div>
+
+                    <div class="form-control md:col-span-2">
+                        <label class="label">
+                            <span class="label-text flex items-center gap-2">
+                                <i class="fas fa-globe"></i>
+                                Country
+                            </span>
+                        </label>
+                        <input type="text" id="country" name="country" placeholder="Your country" class="input input-bordered w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Artist Types -->
+            <div id="step-3" class="hidden">
+                <p class="text-center mb-6 opacity-80">Select at least one artist type that describes you</p>
+
+                <input type="hidden" id="artistTypes" name="artistTypes">
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="artist-types-container">
+                    <!-- Artist types will be added here by JavaScript -->
+                </div>
+
+                <p id="artistTypes-error" class="error-message mt-4 text-center hidden"></p>
+            </div>
+
+            <!-- Step 4: Review -->
+            <div id="step-4" class="text-center hidden">
+                <div class="mb-8">
+                    <div class="w-20 h-20 bg-success text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">Ready to join!</h2>
+                    <p class="opacity-80">Review your information and complete your registration</p>
+                </div>
+
+                <div class="bg-base-200 rounded-lg p-6 mb-6 text-left space-y-4" id="review-info">
+                    <!-- Review information will be added here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="flex justify-between mt-8">
+                <div id="back-button-container">
+                    <button type="button" id="back-button" class="btn btn-ghost hidden">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back
+                    </button>
+                </div>
+
+                <div id="next-button-container">
+                    <button type="button" id="next-button" class="btn btn-primary">
+                        Next
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Artist type data with sample images
+        const ARTIST_TYPES = [
+            {
+                type: "visual arts",
+                image: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "digital & new media arts",
+                image: "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "literary arts",
+                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "performance arts",
+                image: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "music art",
+                image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "culinary art",
+                image: "https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "functional art",
+                image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "environmental art",
+                image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "film art",
+                image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+                type: "cross-disciplinary art",
+                image: "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            }
+        ];
+
+        // Current step
+        let currentStep = 1;
+        const totalSteps = 4;
+        let selectedTypes = [];
+
+        // DOM elements
+        const stepTitle = document.getElementById('step-title');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+        const step4 = document.getElementById('step-4');
+        const backButton = document.getElementById('back-button');
+        const nextButton = document.getElementById('next-button');
+        const backButtonContainer = document.getElementById('back-button-container');
+        const nextButtonContainer = document.getElementById('next-button-container');
+        const artistTypesContainer = document.getElementById('artist-types-container');
+        const artistTypesInput = document.getElementById('artistTypes');
+        const reviewInfo = document.getElementById('review-info');
+        const registrationForm = document.getElementById('registration-form');
+
+        // Step titles
+        const stepTitles = [
+            "Create your account",
+            "Personal information (optional)",
+            "Select your artist types",
+            "Complete your registration"
+        ];
+
+        // Initialize the form
+        function initForm() {
+            // Render artist types
+            renderArtistTypes();
+            
+            // Set up event listeners
+            backButton.addEventListener('click', prevStep);
+            nextButton.addEventListener('click', nextStep);
+            
+            // Update the UI for the initial step
+            updateStepUI();
+        }
+
+        // Render artist types
+        function renderArtistTypes() {
+            artistTypesContainer.innerHTML = '';
+            
+            ARTIST_TYPES.forEach(({ type, image }) => {
+                const artistCard = document.createElement('div');
+                artistCard.className = 'artist-card card';
+                artistCard.innerHTML = `
+                    <figure class="artist-image">
+                        <img src="${image}" alt="${type}" class="w-full h-full object-cover">
+                    </figure>
+                    <div class="card-body p-3">
+                        <h3 class="card-title text-sm capitalize">${type}</h3>
+                    </div>
+                `;
+                
+                artistCard.addEventListener('click', () => toggleArtistType(type, artistCard));
+                artistTypesContainer.appendChild(artistCard);
+            });
+        }
+
+        // Toggle artist type selection
+        function toggleArtistType(type, card) {
+            const index = selectedTypes.indexOf(type);
+            
+            if (index === -1) {
+                if (selectedTypes.length >= 3) {
+                    document.getElementById('artistTypes-error').textContent = 'You can only select up to 3 artist types';
+                    document.getElementById('artistTypes-error').classList.remove('hidden');
+                    return;
+                }
+                selectedTypes.push(type);
+                card.classList.add('selected');
+                card.querySelector('figure').innerHTML += `
+                    <div class="artist-check">
+                        <i class="fas fa-check text-xs"></i>
+                    </div>
+                `;
+            } else {
+                selectedTypes.splice(index, 1);
+                card.classList.remove('selected');
+                const checkElement = card.querySelector('.artist-check');
+                if (checkElement) {
+                    checkElement.remove();
+                }
+            }
+            
+            artistTypesInput.value = selectedTypes.join(',');
+            
+            // Clear error if at least one type is selected
+            if (selectedTypes.length > 0) {
+                document.getElementById('artistTypes-error').classList.add('hidden');
+            }
+        }
+
+        // Update step UI
+        function updateStepUI() {
+            // Update step title
+            stepTitle.innerHTML = `<p class="text-lg">${stepTitles[currentStep - 1]}</p>`;
+            
+            // Show/hide steps
+            step1.classList.toggle('hidden', currentStep !== 1);
+            step2.classList.toggle('hidden', currentStep !== 2);
+            step3.classList.toggle('hidden', currentStep !== 3);
+            step4.classList.toggle('hidden', currentStep !== 4);
+            
+            // Update back button
+            backButton.classList.toggle('hidden', currentStep === 1);
+            
+            // Update next button
+            if (currentStep === totalSteps) {
+                nextButtonContainer.innerHTML = `
+                    <button type="submit" class="btn btn-success" onclick="window.location='home.html'">
+                        Complete Registration
+                    </button>
+                `;
+            } else {
+                nextButtonContainer.innerHTML = `
+                    <button type="button" id="next-button" class="btn btn-primary">
+                        Next
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                `;
+                document.getElementById('next-button').addEventListener('click', nextStep);
+            }
+            
+            // Update progress indicator
+            updateProgressIndicator();
+            
+            // If on step 4, update review information
+            if (currentStep === 4) {
+                updateReviewInfo();
+            }
+        }
+
+        // Update progress indicator
+        function updateProgressIndicator() {
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const progressConnectors = document.querySelectorAll('.progress-connector');
+            
+            progressSteps.forEach((step, index) => {
+                if (index + 1 < currentStep) {
+                    step.className = 'progress-step bg-success text-white';
+                    step.innerHTML = '<i class="fas fa-check text-xs"></i>';
+                } else if (index + 1 === currentStep) {
+                    step.className = 'progress-step bg-primary text-white';
+                    step.textContent = index + 1;
+                } else {
+                    step.className = 'progress-step bg-gray-300';
+                    step.textContent = index + 1;
+                }
+            });
+            
+            progressConnectors.forEach((connector, index) => {
+                if (index + 1 < currentStep) {
+                    connector.className = 'progress-connector bg-success';
+                } else {
+                    connector.className = 'progress-connector bg-gray-300';
+                }
+            });
+        }
+
+        // Update review information
+        function updateReviewInfo() {
+            let html = `
+                <div>
+                    <h3 class="font-bold mb-2">Account Information</h3>
+                    <p><span class="opacity-70">Username:</span> ${document.getElementById('username').value}</p>
+                    <p><span class="opacity-70">Email:</span> ${document.getElementById('email').value}</p>
+                </div>
+            `;
+            
+            const firstName = document.getElementById('firstName').value;
+            const middleName = document.getElementById('middleName').value;
+            const lastName = document.getElementById('lastName').value;
+            const city = document.getElementById('city').value;
+            const country = document.getElementById('country').value;
+            
+            if (firstName || middleName || lastName) {
+                html += `
+                    <div>
+                        <h3 class="font-bold mt-4 mb-2">Personal Information</h3>
+                        <p><span class="opacity-70">Name:</span> ${[firstName, middleName, lastName].filter(Boolean).join(' ')}</p>
+                `;
+                
+                if (city || country) {
+                    html += `<p><span class="opacity-70">Location:</span> ${[city, country].filter(Boolean).join(', ')}</p>`;
+                }
+                
+                html += `</div>`;
+            }
+            
+            if (selectedTypes.length > 0) {
+                html += `
+                    <div>
+                        <h3 class="font-bold mt-4 mb-2">Artist Types</h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${selectedTypes.map(type => `
+                                <span class="badge badge-primary">${type}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            reviewInfo.innerHTML = html;
+        }
+
+        // Validate step
+        function validateStep(step) {
+            let isValid = true;
+            
+            if (step === 1) {
+                // Validate username
+                const username = document.getElementById('username').value;
+                if (username.length < 3) {
+                    document.getElementById('username-error').textContent = 'Username must be at least 3 characters';
+                    document.getElementById('username-error').classList.remove('hidden');
+                    document.getElementById('username').classList.add('input-error');
+                    isValid = false;
+                } else {
+                    document.getElementById('username-error').classList.add('hidden');
+                    document.getElementById('username').classList.remove('input-error');
+                }
+                
+                // Validate email
+                const email = document.getElementById('email').value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById('email-error').textContent = 'Please enter a valid email';
+                    document.getElementById('email-error').classList.remove('hidden');
+                    document.getElementById('email').classList.add('input-error');
+                    isValid = false;
+                } else {
+                    document.getElementById('email-error').classList.add('hidden');
+                    document.getElementById('email').classList.remove('input-error');
+                }
+                
+                // Validate password
+                const password = document.getElementById('password').value;
+                if (password.length < 8) {
+                    document.getElementById('password-error').textContent = 'Password must be at least 8 characters';
+                    document.getElementById('password-error').classList.remove('hidden');
+                    document.getElementById('password').classList.add('input-error');
+                    isValid = false;
+                } else {
+                    document.getElementById('password-error').classList.add('hidden');
+                    document.getElementById('password').classList.remove('input-error');
+                }
+                
+                // Validate confirm password
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                if (password !== confirmPassword) {
+                    document.getElementById('confirmPassword-error').textContent = 'Passwords don\'t match';
+                    document.getElementById('confirmPassword-error').classList.remove('hidden');
+                    document.getElementById('confirmPassword').classList.add('input-error');
+                    isValid = false;
+                } else {
+                    document.getElementById('confirmPassword-error').classList.add('hidden');
+                    document.getElementById('confirmPassword').classList.remove('input-error');
+                }
+            } else if (step === 3) {
+                // Validate artist types
+                if (selectedTypes.length === 0) {
+                    document.getElementById('artistTypes-error').textContent = 'Select at least one artist type';
+                    document.getElementById('artistTypes-error').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('artistTypes-error').classList.add('hidden');
+                }
+            }
+            
+            return isValid;
+        }
+
+        // Next step
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                currentStep++;
+                updateStepUI();
+                
+                // Add animation classes
+                const currentStepElement = document.getElementById(`step-${currentStep - 1}`);
+                currentStepElement.classList.add('slide-in-right');
+                
+                setTimeout(() => {
+                    currentStepElement.classList.remove('slide-in-right');
+                }, 300);
+            }
+        }
+
+        // Previous step
+        function prevStep() {
+            currentStep--;
+            updateStepUI();
+            
+            // Add animation classes
+            const currentStepElement = document.getElementById(`step-${currentStep + 1}`);
+            currentStepElement.classList.add('slide-out-left');
+            
+            setTimeout(() => {
+                currentStepElement.classList.remove('slide-out-left');
+            }, 300);
+        }
+
+        // Form submission
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (currentStep === totalSteps && validateStep(3)) {
+                // Collect all form data
+                const formData = {
+                    username: document.getElementById('username').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    confirmPassword: document.getElementById('confirmPassword').value,
+                    firstName: document.getElementById('firstName').value,
+                    middleName: document.getElementById('middleName').value,
+                    lastName: document.getElementById('lastName').value,
+                    city: document.getElementById('city').value,
+                    country: document.getElementById('country').value,
+                    artistTypes: selectedTypes
+                };
+                
+                console.log('Registration data:', formData);
+                // Here you would typically send the data to your server
+                alert('Registration successful!');
+            }
+        });
+
+        // Initialize the form when the page loads
+        window.addEventListener('DOMContentLoaded', initForm);
+    </script>
+</body>
+</html>

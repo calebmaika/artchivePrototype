@@ -1,0 +1,59 @@
+/* Base styles */
+body {
+    background-color: var(--fallback-b3, oklch(var(--b3)/1));
+  }
+  
+  /* Card body customization */
+  .card-body {
+    background-color: var(--fallback-b1, oklch(var(--b1)/1));
+    border-radius: 0.375rem;
+    border: 1px solid var(--fallwatch-b3, oklch(var(--b3)/1));
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+  
+  /* Input customization */
+  .input {
+    outline-offset: 0px;
+  }
+  .input:focus {
+    outline: 2px solid var(--fallback-p, oklch(var(--p)/1));
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border-color: transparent;
+  }
+  .input:focus {
+    border-color: #6a5acd;
+    box-shadow: 0 0 8px rgba(106, 90, 205, 0.4);
+  }
+  
+  /* Error text */
+  .text-error {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--fallback-er, oklch(var(--er)/1));
+  }
+  
+  /* Animation classes for JavaScript toggling */
+  .hidden {
+    display: none;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, height 0.3s ease;
+  }
+  
+  .visible {
+    display: flex;
+    opacity: 1;
+    height: auto;
+    transition: opacity 0.3s ease, height 0.3s ease;
+  }
+  
+  /* Loading spinner */
+  .fa-spin {
+    animation: fa-spin 2s infinite linear;
+  }
+  
+  @keyframes fa-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
