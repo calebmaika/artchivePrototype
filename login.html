@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="login.css">
+  <link rel="icon" type="image/x-icon" href="favicon.png">
   <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
 </head>
 <body data-theme="light">
@@ -17,7 +18,7 @@
         <div class="card-body p-8">
           <div class="text-center mb-8">
             <div class="flex justify-center mb-4">
-              <img src="favicon/favicon.ico" alt="ArtChive Logo" class="w-16 h-16">
+              <img src="favicon.png" alt="icon" width="50">
             </div>
             <h1 class="text-3xl font-bold mb-2">Welcome back</h1>
             <p class="text-base-content/70">
@@ -68,7 +69,7 @@
             </div>
 
             <div class="form-control mt-8">
-              <button type="submit" id="submitBtn" class="btn btn-primary">
+              <button type="submit" id="submitBtn" class="btn btn-primary" onclick="window.location.href='home.html'">
                 Sign in
               </button>
             </div>

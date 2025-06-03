@@ -6,7 +6,17 @@
     <title>Profile | ArtChive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="test_design3.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+
     <style>
+        body {
+            display: block !important;
+        }
+
+        main {
+            margin: 0px 20px;
+        }
+
         .profile-header {
             background: white;
             border-radius: 8px;
@@ -732,21 +742,25 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">
-            <i class="fas fa-palette"></i>
-            <span>ArtChive</span>
-        </div>
+        <a href="home.html" style="text-decoration: none;">
+            <div class="logo">
+                <img src="favicon.png" alt="icon" width="25">
+                <span>ArtChive</span>
+            </div>
+        </a>
         <div class="search-bar">
             <input type="text" placeholder="Search artists, artworks, collectives...">
         </div>
-        <div class="user-info">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png" alt="User Avatar" class="user-avatar">
-            <div class="user-details">
-                <span class="user-name">Chernobog</span>
-                <span class="user-handle">@chernobog_art</span>
-                <span class="artist-type">Digital Artist | Character Designer</span>
+        <a href="profile.html" style="text-decoration: none;">
+            <div class="user-info">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png" alt="User Avatar" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Chernobog</span>
+                    <span class="user-handle">@chernobog_art</span>
+                    <span class="artist-type">Digital Artist | Character Designer</span>
+                </div>
             </div>
-        </div>
+        </a>
         <div class="header-icons">
             <i class="fas fa-bell" title="Notifications"></i>
             <i class="fas fa-trophy" title="Arts Leaderboard"></i>
@@ -755,37 +769,8 @@
         </div>
     </header>
 
-    <!-- Left Sidebar -->
-    <aside class="left-sidebar">
-        <div class="sidebar-section">
-            <a href="profile.html" class="sidebar-link">
-                <i class="fas fa-user"></i>
-                <span>Profile</span>
-            </a>
-            <a href="home.html" class="sidebar-link">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="gallery.html" class="sidebar-link">
-                <i class="fas fa-images"></i>
-                <span>Gallery</span>
-            </a>
-            <a href="collectives.html" class="sidebar-link">
-                <i class="fas fa-users"></i>
-                <span>Collectives</span>
-            </a>
-            <a href="create_post.html" class="sidebar-link">
-                <i class="fas fa-plus-circle"></i>
-                <div>
-                    <span>Create Post</span>
-                    <span class="subtitle">Share your artwork with the community</span>
-                </div>
-            </a>
-        </div>
-    </aside>
-
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="profile-content">
         <div class="profile-header">
             <div class="profile-info">
                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png" alt="Profile Picture" class="profile-avatar">
@@ -821,8 +806,6 @@
 
         <div class="profile-tabs">
             <div class="profile-tab active" data-tab="timeline">Timeline</div>
-            <div class="profile-tab" data-tab="gallery">Gallery</div>
-            <div class="profile-tab" data-tab="avatar">Avatar</div>
             <div class="profile-tab" data-tab="collectives">Collectives</div>
         </div>
 
@@ -865,259 +848,6 @@
                     <div class="post-action">
                         <i class="fas fa-share"></i>
                         <span>Share</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gallery Tab -->
-        <div class="tab-content" id="gallery">
-            <div class="portfolio-builder">
-                <div class="portfolio-toolbar">
-                    <div class="toolbar-section">
-                        <button class="toolbar-button" title="Add Section">
-                            <i class="fas fa-plus"></i> Add Section
-                        </button>
-                        <button class="toolbar-button" title="Grid Layout">
-                            <i class="fas fa-th"></i> Grid
-                        </button>
-                        <button class="toolbar-button" title="Masonry Layout">
-                            <i class="fas fa-th-large"></i> Masonry
-                        </button>
-                        <button class="toolbar-button" title="Carousel Layout">
-                            <i class="fas fa-images"></i> Carousel
-                        </button>
-                    </div>
-                    <div class="toolbar-section">
-                        <button class="toolbar-button" title="Upload Artwork">
-                            <i class="fas fa-upload"></i> Upload
-                        </button>
-                        <button class="toolbar-button" title="Import from Gallery">
-                            <i class="fas fa-folder-open"></i> Import
-                        </button>
-                    </div>
-                </div>
-
-                <div class="portfolio-content">
-                    <!-- Featured Section -->
-                    <div class="portfolio-section featured">
-                        <div class="section-header">
-                            <h3>Featured Works</h3>
-                            <div class="section-actions">
-                                <button class="section-button"><i class="fas fa-ellipsis-h"></i></button>
-                                <button class="section-button"><i class="fas fa-arrows-alt"></i></button>
-                            </div>
-                        </div>
-                        <div class="featured-grid">
-                            <div class="featured-item large">
-                                <img src="https://picsum.photos/800/600?random=1" alt="Featured Artwork">
-                                <div class="artwork-info">
-                                    <h4>Digital Dreams</h4>
-                                    <p>Digital Art • 2024</p>
-                                </div>
-                            </div>
-                            <div class="featured-item">
-                                <img src="https://picsum.photos/400/400?random=2" alt="Artwork">
-                                <div class="artwork-info">
-                                    <h4>Abstract Thoughts</h4>
-                                    <p>Abstract • 2024</p>
-                                </div>
-                            </div>
-                            <div class="featured-item">
-                                <img src="https://picsum.photos/400/400?random=3" alt="Artwork">
-                                <div class="artwork-info">
-                                    <h4>Color Theory</h4>
-                                    <p>Digital Art • 2024</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Series Section -->
-                    <div class="portfolio-section series">
-                        <div class="section-header">
-                            <h3>Character Design Series</h3>
-                            <div class="section-actions">
-                                <button class="section-button"><i class="fas fa-ellipsis-h"></i></button>
-                                <button class="section-button"><i class="fas fa-arrows-alt"></i></button>
-                            </div>
-                        </div>
-                        <div class="series-grid">
-                            <div class="series-item">
-                                <img src="https://picsum.photos/300/400?random=4" alt="Character Design">
-                                <div class="artwork-info">
-                                    <h4>Character 1</h4>
-                                    <p>Concept Art • 2024</p>
-                                </div>
-                            </div>
-                            <div class="series-item">
-                                <img src="https://picsum.photos/300/400?random=5" alt="Character Design">
-                                <div class="artwork-info">
-                                    <h4>Character 2</h4>
-                                    <p>Concept Art • 2024</p>
-                                </div>
-                            </div>
-                            <div class="series-item">
-                                <img src="https://picsum.photos/300/400?random=6" alt="Character Design">
-                                <div class="artwork-info">
-                                    <h4>Character 3</h4>
-                                    <p>Concept Art • 2024</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Process Section -->
-                    <div class="portfolio-section process">
-                        <div class="section-header">
-                            <h3>Work in Progress</h3>
-                            <div class="section-actions">
-                                <button class="section-button"><i class="fas fa-ellipsis-h"></i></button>
-                                <button class="section-button"><i class="fas fa-arrows-alt"></i></button>
-                            </div>
-                        </div>
-                        <div class="process-timeline">
-                            <div class="process-step">
-                                <img src="https://picsum.photos/200/200?random=7" alt="Sketch">
-                                <div class="step-info">
-                                    <h4>Initial Sketch</h4>
-                                    <p>Day 1</p>
-                                </div>
-                            </div>
-                            <div class="process-step">
-                                <img src="https://picsum.photos/200/200?random=8" alt="Color Blocking">
-                                <div class="step-info">
-                                    <h4>Color Blocking</h4>
-                                    <p>Day 2</p>
-                                </div>
-                            </div>
-                            <div class="process-step">
-                                <img src="https://picsum.photos/200/200?random=9" alt="Final Details">
-                                <div class="step-info">
-                                    <h4>Final Details</h4>
-                                    <p>Day 3</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Avatar Tab -->
-        <div class="tab-content" id="avatar">
-            <div class="avatar-customization">
-                <div class="avatar-preview">
-                    <div class="current-avatar">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia" alt="Current Avatar" id="avatar-preview">
-                    </div>
-                    <div class="avatar-actions">
-                        <button class="avatar-button save-avatar">Save Avatar</button>
-                        <button class="avatar-button reset-avatar">Reset Changes</button>
-                    </div>
-                </div>
-                
-                <div class="customization-options">
-                    <div class="option-section">
-                        <h3>Avatar Style</h3>
-                        <div class="style-options">
-                            <div class="style-option active" data-style="avataaars">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=style1" alt="Avataaars">
-                                <span>Avataaars</span>
-                            </div>
-                            <div class="style-option" data-style="bottts">
-                                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=style2" alt="Bottts">
-                                <span>Bottts</span>
-                            </div>
-                            <div class="style-option" data-style="pixel-art">
-                                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=style3" alt="Pixel Art">
-                                <span>Pixel Art</span>
-                            </div>
-                            <div class="style-option" data-style="adventurer">
-                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=style4" alt="Adventurer">
-                                <span>Adventurer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="option-section">
-                        <h3>Skin Tone</h3>
-                        <div class="skin-tones">
-                            <div class="skin-tone" style="background: #FFDBAC;" data-tone="light"></div>
-                            <div class="skin-tone" style="background: #EDB98A;" data-tone="medium-light"></div>
-                            <div class="skin-tone" style="background: #D08B5B;" data-tone="medium"></div>
-                            <div class="skin-tone" style="background: #AE5D29;" data-tone="medium-dark"></div>
-                            <div class="skin-tone" style="background: #614335;" data-tone="dark"></div>
-                        </div>
-                    </div>
-
-                    <div class="option-section">
-                        <h3>Hair Style</h3>
-                        <div class="hair-styles">
-                            <div class="style-option" data-style="short">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair1&hair=shortHair" alt="Short Hair">
-                                <span>Short</span>
-                            </div>
-                            <div class="style-option" data-style="long">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair2&hair=longHair" alt="Long Hair">
-                                <span>Long</span>
-                            </div>
-                            <div class="style-option" data-style="bald">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair3&hair=bald" alt="Bald">
-                                <span>Bald</span>
-                            </div>
-                            <div class="style-option" data-style="mohawk">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair4&hair=mohawk" alt="Mohawk">
-                                <span>Mohawk</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="option-section">
-                        <h3>Hair Color</h3>
-                        <div class="color-options">
-                            <div class="color-option" style="background: #000000;" data-color="black"></div>
-                            <div class="color-option" style="background: #4A3000;" data-color="brown"></div>
-                            <div class="color-option" style="background: #C68642;" data-color="blonde"></div>
-                            <div class="color-option" style="background: #FF0000;" data-color="red"></div>
-                            <div class="color-option" style="background: #800080;" data-color="purple"></div>
-                        </div>
-                    </div>
-
-                    <div class="option-section">
-                        <h3>Facial Features</h3>
-                        <div class="feature-options">
-                            <div class="style-option" data-feature="smile">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=face1&mouth=smile" alt="Smile">
-                                <span>Smile</span>
-                            </div>
-                            <div class="style-option" data-feature="serious">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=face2&mouth=serious" alt="Serious">
-                                <span>Serious</span>
-                            </div>
-                            <div class="style-option" data-feature="wink">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=face3&mouth=wink" alt="Wink">
-                                <span>Wink</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="option-section">
-                        <h3>Accessories</h3>
-                        <div class="accessories">
-                            <div class="accessory-option" data-accessory="glasses">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=acc1&accessories=round" alt="Glasses">
-                                <span>Glasses</span>
-                            </div>
-                            <div class="accessory-option" data-accessory="sunglasses">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=acc2&accessories=wayfarers" alt="Sunglasses">
-                                <span>Sunglasses</span>
-                            </div>
-                            <div class="accessory-option" data-accessory="none">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=acc3&accessories=none" alt="None">
-                                <span>None</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,695 @@
+:root {
+    --primary: #6a5acd;
+    --primary-transparent: rgba(106, 90, 205, 0.7);
+    --secondary: #ff6b6b;
+    --text-light: #f8f9fa;
+    --text-dark: #212529;
+    --overlay-dark: rgba(0, 0, 0, 0.6);
+    --overlay-light: rgba(255, 255, 255, 0.1);
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+
+/* Section Headers with Wavy Animation */
+.featured-header, .browse-galleries > h2, .fellows-section > h2 {
+    position: relative;
+    background: var(--primary);
+    color: white !important;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .featured-header:hover, .browse-galleries > h2:hover, .fellows-section > h2:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .featured-header::before, .browse-galleries > h2::before, .fellows-section > h2::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="rgba(255,255,255,0.2)"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="rgba(255,255,255,0.3)"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="rgba(255,255,255,0.4)"/></svg>');
+    background-repeat: repeat-x;
+    background-size: 50% 100%;
+    animation: wave 15s linear infinite;
+    z-index: 1;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .featured-header h2, .browse-galleries > h2, .fellows-section > h2 {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Filters in featured header */
+  .filters {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 2;
+  }
+  
+  .filter-group select {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-group select:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .filter-group select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  .filter-group option {
+    background: var(--primary);
+    color: white;
+  }
+
+/* Fellows Section */
+.fellows-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.fellows-section h2 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.fellows-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: hidden;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+    position: relative;
+    height: 220px;
+}
+
+.fellow-card {
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    flex-shrink: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.fellow-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.fellow-card:hover .fellow-image {
+    transform: scale(1.05);
+}
+
+.fellow-avatar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid var(--card-bg);
+    object-fit: cover;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.fellow-card:hover .fellow-avatar {
+    transform: scale(1.1);
+    border-color: var(--primary);
+}
+
+.online-dot {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    border: 2px solid var(--card-bg);
+    transition: transform 0.3s ease;
+}
+
+.fellow-card:hover .online-dot {
+    transform: scale(1.2);
+}
+
+/* Fellows navigation */
+.fellows-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    border: none;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.fellows-nav:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.fellows-prev {
+    left: 10px;
+}
+
+.fellows-next {
+    right: 10px;
+}
+
+/* Fellows dots */
+.fellows-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.fellow-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fellow-dot.active {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
+
+.fellow-dot:hover {
+    background-color: var(--secondary);
+}
+
+/* Featured Galleries */
+.featured-galleries {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+
+/* Filter Styles */
+.filters {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.filter-group {
+    position: relative;
+    min-width: 200px;
+}
+
+.filter-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 0.75rem 1.5rem 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236a5acd' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px;
+}
+
+.filter-group select:hover {
+    border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(106, 90, 205, 0.1);
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+}
+
+/* Custom dropdown options styling */
+.filter-group select option {
+    padding: 0.75rem 1rem;
+    background-color: white;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.filter-group select option:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.filter-group select option:checked {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+}
+
+/* For Firefox - style the dropdown arrow */
+@-moz-document url-prefix() {
+    .filter-group select {
+        padding-right: 1.5rem;
+    }
+}
+
+/* For IE11 - hide the native arrow */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .filter-group select::-ms-expand {
+        display: none;
+    }
+    .filter-group select {
+        padding-right: 1rem;
+    }
+}
+
+.carousel-container {
+    position: relative;
+    height: 500px;
+}
+
+.carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    height: 100%;
+    align-items: center;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    border: none;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.carousel-nav.prev {
+    left: 10px;
+}
+
+.carousel-nav.next {
+    right: 10px;
+}
+
+.gallery-card {
+    position: relative;
+    min-width: 300px;
+    height: 400px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-card:not(.active) {
+    filter: blur(2px) brightness(0.8);
+    transform: scale(0.9);
+}
+
+.gallery-card.active {
+    min-width: 350px;
+    height: 450px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: var(--overlay-dark);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.gallery-card .card-overlay {
+    background-color: var(--overlay-dark);
+}
+
+.gallery-card:hover .card-overlay {
+    background-color: var(--primary-transparent);
+}
+
+.gallery-card:hover.active {
+    cursor: pointer;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.card-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.gallery-card:hover .card-details {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+
+.card-user {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.user-avatar-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--card-bg);
+    margin-right: 0.5rem;
+}
+
+.user-info-small {
+    font-size: 0.8rem;
+}
+
+.user-name-small {
+    font-weight: bold;
+    display: block;
+}
+
+.user-handle-small {
+    color: #ddd;
+    display: block;
+}
+
+.artist-type-small {
+    font-size: 0.7rem;
+    display: block;
+    margin-top: 0.2rem;
+}
+
+.card-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.card-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.card-options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--card-bg);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.options-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 0.5rem 0;
+    width: 200px;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.card-options:hover .options-dropdown {
+    opacity: 1;
+    visibility: visible;
+}
+
+.option-item {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.option-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Browse Galleries Section */
+.browse-galleries {
+    padding: 1.5rem;
+}
+
+.browse-galleries h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-gallery-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    height: 300px;
+}
+
+.grid-image-container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 70px);
+    overflow: hidden;
+}
+
+.grid-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.grid-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.hover-content {
+    color: white;
+    text-align: center;
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.hover-content i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover-content i:hover {
+    color: var(--secondary);
+    transform: scale(1.2);
+}
+
+.grid-gallery-card:hover .grid-gallery-image {
+    transform: scale(1.05);
+}
+
+.grid-gallery-card:hover .grid-hover-overlay {
+    opacity: 1;
+}
+
+/* Animation for cards */
+.grid-gallery-card {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes fadeInUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Add slight delay between cards */
+.gallery-grid {
+    counter-reset: card;
+}
+
+.grid-gallery-card {
+    --i: counter(card);
+    counter-increment: card;
+}
+
+.grid-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.8rem;
+    background-color: var(--primary);
+    color: var(--text-light);
+    transition: background-color 0.3s ease;
+}
+
+.grid-card-user {
+    display: flex;
+    align-items: center;
+}
+
+.grid-user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--card-bg);
+    margin-right: 0.5rem;
+}
+
+.grid-user-info {
+    font-size: 0.9rem;
+}
+
+.loading-skeleton {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.skeleton-card {
+    height: 250px;
+    background-color: #e0e0e0;
+    border-radius: var(--border-radius);
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* Color transition effect */
+.color-transition {
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
