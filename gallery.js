@@ -176,6 +176,9 @@ fellowsContainer.addEventListener('mouseleave', () => {
   // Render featured galleries carousel
   const carousel = document.querySelector(".carousel");
   featuredData.forEach((gallery, index) => {
+    const aTag = document.createElement("a");
+    aTag.href = "gallery-view.html";
+
     const galleryCard = document.createElement("div");
     galleryCard.className = `gallery-card ${index === 2 ? "active" : ""}`;
     galleryCard.innerHTML = `
@@ -207,7 +210,8 @@ fellowsContainer.addEventListener('mouseleave', () => {
                 </div>
             </div>
         `;
-    carousel.appendChild(galleryCard);
+    aTag.appendChild(galleryCard)
+    carousel.appendChild(aTag);
   });
 
   // Render browse galleries grid with hover effects
@@ -300,7 +304,8 @@ fellowsContainer.addEventListener('mouseleave', () => {
       const r = Math.floor(0x6a + (0xff - 0x6a) * scrollPercent);
       const g = Math.floor(0x5a + (0x6b - 0x5a) * scrollPercent);
       const b = Math.floor(0xcd + (0x6b - 0xcd) * scrollPercent);
-      const newColor = `rgb(${r}, ${g}, ${b})`;
+      const a = 0.6;
+      const newColor = `rgb(${r}, ${g}, ${b}, ${a})`;
 
       gridCards.forEach((card) => {
         const body = card.querySelector(".grid-card-body");

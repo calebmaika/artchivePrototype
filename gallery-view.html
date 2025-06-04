@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Gallery View</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="gallery-view.css">
+    <style>
+        .icon-button {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            background-color: var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon-button::before {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff; /* White background behind the icon */
+            z-index: 1;
+        }
+        
+        .icon-button img {
+            position: relative;
+            z-index: 2;
+            width: 25px;
+            height: 25px;
+            filter: drop-shadow(1px 1px 0 #ffffff)
+                      drop-shadow(-1px -1px 0 #ffffff);
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        /* Hover Effects */
+        .icon-button:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.5);
+            background-color: var(--primary); /* Optional: change color on hover */
+        }
+        
+        .icon-button:hover img {
+            transform: rotate(10deg) scale(1.1);
+            filter: drop-shadow(1px 1px 0 #ffffff)
+                     drop-shadow(-1px -1px 0 #ffffff)
+                     brightness(1.1);
+        }
+
+        .icon-button .tooltip {
+            visibility: hidden;
+            width: max-content;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 6px 10px;
+            position: absolute;
+            z-index: 1000;
+            top: 10px; /* Position above the button */
+            left: 110px;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            font-size: 14px;
+            pointer-events: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .icon-button:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="position: relative; z-index: 100;">
+        <button class="icon-button" onclick="window.location.href='gallery.html'">
+            <img src="favicon.png" alt="icon" width="25">
+            <span class="tooltip"><i class="fa-solid fa-photo-film"></i> Go back to <span style="color:var(--primary)">Galleries</span></span>
+        </button>
+    </div>
+
+    <!-- Page Navigation Dots -->
+    <div class="page-dots">
+        <div class="page-dot active" data-section="about"></div>
+        <div class="page-dot" data-section="gallery"></div>
+        <div class="page-dot" data-section="links"></div>
+        <div class="page-dot" data-section="feedback"></div>
+    </div>
+
+    <!-- Section 1: About Artist -->
+    <section id="about" class="section about-section">
+        <div class="about-content">
+            <div class="artist-info">
+                <h1 class="artist-name">Sarah Anderson</h1>
+                <div class="artist-meta">
+                    <span class="username">@sarahart</span>
+                    <span class="artist-type">Digital Artist & Illustrator</span>
+                </div>
+                <div class="artist-bio">
+                    <p>Creating vibrant digital worlds and bringing imagination to life through art. Specializing in character design and concept art for games and animation.</p>
+                </div>
+                <div class="artist-experience">
+                    <h3>Experience</h3>
+                    <div class="experience-items">
+                        <div class="exp-item">
+                            <i class="fas fa-gamepad"></i>
+                            <h4>Game Studios</h4>
+                            <p>Lead Character Designer at Epic Games (2018-2023)</p>
+                        </div>
+                        <div class="exp-item">
+                            <i class="fas fa-film"></i>
+                            <h4>Animation</h4>
+                            <p>Concept Artist at Pixar Animation Studios (2015-2018)</p>
+                        </div>
+                        <div class="exp-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>Freelance</h4>
+                            <p>Digital Art Commissions for Various Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="artist-image-container">
+                <div class="image-overlay"></div>
+                <img src="https://picsum.photos/800/1200" alt="Sarah Anderson" class="artist-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Gallery -->
+    <section id="gallery" class="section gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-carousel">
+                <button class="carousel-nav prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-track">
+                    <!-- Gallery items will be dynamically added here -->
+                </div>
+                <button class="carousel-nav next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Links -->
+    <section id="links" class="section links-section">
+        <div class="links-container">
+            <h2>Find My Art</h2>
+            <div class="links-grid">
+                <a href="#" class="link-card">
+                    <i class="fab fa-artstation"></i>
+                    <span>ArtStation</span>
+                </a>
+                <a href="#" class="link-card">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="link-card">
+                    <i class="fab fa-behance"></i>
+                    <span>Behance</span>
+                </a>
+                <a href="#" class="link-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Art Store</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Feedback -->
+    <section id="feedback" class="section feedback-section">
+        <div class="feedback-container">
+            <div class="feedback-header">
+                <h2>Feedback</h2>
+            </div>
+            
+            <!-- Feedback Form -->
+            <div class="feedback-form">
+                <textarea placeholder="Share your thoughts about the artist's work..."></textarea>
+                <div class="feedback-actions">
+                    <button class="submit-feedback">Post Feedback</button>
+                    <div class="mood-selector">
+                        <button class="mood-btn positive active">
+                            <i class="fas fa-smile"></i>
+                        </button>
+                        <button class="mood-btn negative">
+                            <i class="fas fa-frown"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback List -->
+            <div class="feedback-list">
+                <!-- Example of a feedback item -->
+                <div class="feedback-item">
+                    <div class="feedback-item-header">
+                        <img src="https://picsum.photos/50/50?random=1" alt="User Avatar" class="user-avatar">
+                        <div class="user-info">
+                            <div class="user-name">Alex Chen</div>
+                            <div class="user-meta">
+                                <span class="username">@alexchen</span>
+                                <span class="artist-type">Digital Artist | Character Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feedback-content">
+                        <p>Sarah's work consistently amazes me. The attention to detail in her character designs is extraordinary! I've been following her work for years, and she never ceases to inspire.</p>
+                    </div>
+                    <div class="feedback-actions">
+                        <button class="feedback-action-btn">
+                            <i class="far fa-heart"></i>
+                            <span>42</span>
+                        </button>
+                        <button class="feedback-action-btn">
+                            <i class="far fa-comment"></i>
+                            <span>Reply</span>
+                        </button>
+                    </div>
+                    <div class="feedback-replies">
+                        <div class="feedback-item">
+                            <div class="feedback-item-header">
+                                <img src="https://picsum.photos/50/50?random=2" alt="User Avatar" class="user-avatar">
+                                <div class="user-info">
+                                    <div class="user-name">Maria Garcia</div>
+                                    <div class="user-meta">
+                                        <span class="username">@mgarcia</span>
+                                        <span class="artist-type">Art Director</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feedback-content">
+                                <p>Couldn't agree more! The Guardian character design is my favorite.</p>
+                            </div>
+                            <div class="feedback-actions">
+                                <button class="feedback-action-btn">
+                                    <i class="far fa-heart"></i>
+                                    <span>12</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="gallery-view.js"></script>
+</body>
+</html>
