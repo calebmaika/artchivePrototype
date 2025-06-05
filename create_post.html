@@ -3,11 +3,560 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Create Post | ArtChive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="test_design3.css">
     <link rel="icon" type="image/x-icon" href="favicon.png">
+    <style>
+        /* Root Variables for Consistent Styling */
+        :root {
+            --primary: #6a5acd; /* Slate blue */
+            --secondary: #ff6b6b; /* Coral */
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --gray: #dfe6e9;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+            --border-radius: 4px;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --border: 1px solid #e0e0e0;
+            --font-size-base: 13px; /* Stack Overflow base font size */
+            --font-size-sm: 11px;
+            --font-size-md: 15px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+            --spacing-xl: 24px;
+            --transition: all 0.2s ease;
+        }
+
+        /* General Form Styles */
+        .post-form {
+            background-color: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: var(--spacing-lg) auto;
+            max-width: 600px;
+            display: none;
+            transition: var(--transition);
+        }
+        .post-form.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+        .form-group label {
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            color: var(--dark);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .form-group label i {
+            color: var(--primary);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.2);
+            outline: none;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .required {
+            color: var(--danger);
+            font-size: var(--font-size-sm);
+        }
+        .form-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-xl);
+        }
+        button {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        button.primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        button.primary:hover {
+            background-color: #483d8b;
+        }
+        button.secondary {
+            background-color: var(--gray);
+            color: var(--dark);
+        }
+        button.secondary:hover {
+            background-color: #ccc;
+        }
+        button i {
+            font-size: var(--font-size-base);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary) !important;
+            color: white !important;
+        }
+
+        /* Right Sidebar Styles */
+        .post-type-tabs {
+            padding: var(--spacing-md);
+        }
+        .post-type-tabs h3 {
+            font-size: var(--font-size-md);
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .post-type-tabs h3 i {
+            color: var(--primary);
+        }
+        .post-type-tabs ul {
+            list-style: none;
+            padding: 0;
+        }
+        .post-type-tabs li {
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+        }
+        .post-type-tabs li:hover {
+            background-color: var(--light);
+            transform: translateX(5px);
+        }
+        .post-type-tabs li.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        .post-type-tabs li i {
+            font-size: var(--font-size-md);
+            color: inherit;
+        }
+        .sidebar-tips {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-md);
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .sidebar-tips h4 {
+            font-size: var(--font-size-md);
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .sidebar-tips p {
+            font-size: var(--font-size-sm);
+            color: var(--dark);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .sidebar-tips p i {
+            color: var(--success);
+        }
+
+        /* Default Post Styles (Stack Overflow Inspired) */
+        .default-post-form {
+            font-size: var(--font-size-base);
+        }
+        #default-editor {
+            border: var(--border);
+            min-height: 200px;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            line-height: 1.5;
+            transition: var(--transition);
+        }
+        #default-editor:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.2);
+        }
+        .editor-toolbar {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background-color: var(--light);
+            border: var(--border);
+            border-radius: var(--border-radius);
+        }
+        .editor-toolbar button {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: var(--font-size-base);
+            padding: var(--spacing-sm);
+            cursor: pointer;
+        }
+        .editor-toolbar button:hover {
+            color: var(--primary);
+        }
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            border: var(--border);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+        }
+        .tag {
+            background-color: var(--primary);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 3px;
+            font-size: var(--font-size-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .tag .remove-tag {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .tag-input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            font-size: var(--font-size-base);
+            padding: var(--spacing-sm);
+        }
+
+        /* Photo Post Styles */
+        .photo-step-container {
+            transition: opacity 0.3s ease;
+        }
+        .photo-step-container.fade {
+            opacity: 0;
+        }
+        .step-progress {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        .step-progress span {
+            flex: 1;
+            text-align: center;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            background-color: var(--gray);
+            font-size: var(--font-size-sm);
+            transition: var(--transition);
+        }
+        .step-progress span.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        .crop-container, .edit-container {
+            margin: var(--spacing-lg) 0;
+            border: var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            position: relative;
+        }
+        .crop-container {
+            height: 300px;
+            background-image: url('https://picsum.photos/600/400');
+            background-size: cover;
+            background-position: center;
+        }
+        .crop-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            pointer-events: none;
+        }
+        .crop-grid div {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(106, 90, 205, 0.1); /* Semi-transparent overlay using --primary */
+            transition: var(--transition);
+        }
+        .crop-grid div:hover {
+            background: rgba(106, 90, 205, 0.3);
+        }
+        .filter-options, .adjustment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        .filter-option, .adjustment-option {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+        }
+        .filter-option:hover, .adjustment-option:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        .filter-option.active, .adjustment-option.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+        .photo-upload-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        .photo-upload-preview img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            border: var(--border);
+            transition: var(--transition);
+        }
+        .photo-upload-preview img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Video Post Styles */
+        .video-timeline {
+            background-color: var(--gray);
+            height: 120px;
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        .video-tool {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+        }
+        .video-tool:hover {
+            background-color: #483d8b;
+        }
+        .video-preview {
+            width: 100%;
+            height: 200px;
+            background-color: #000;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Novel Post Styles */
+        .novel-pages-container {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+        .novel-page {
+            border: var(--border);
+            padding: var(--spacing-md);
+            min-height: 200px;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-title {
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            border-bottom: var(--border);
+        }
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        /* Collaboration and Advanced Settings */
+        .collaboration-section, .advanced-settings, .help-section {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            background-color: var(--light);
+        }
+        .toggle-section {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--font-size-base);
+            padding: var(--spacing-sm);
+        }
+        .toggle-section i {
+            color: var(--primary);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: var(--spacing-md);
+        }
+        .toggle-content.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from { height: 0; opacity: 0; }
+            to { height: auto; opacity: 1; }
+        }
+
+        /* Preview Area */
+        .preview-area {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            border: 1px dashed var(--gray);
+            border-radius: var(--border-radius);
+            background-color: #fafafa;
+            font-size: var(--font-size-base);
+        }
+
+        /* Help Section */
+        .help-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .help-section li {
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .help-section li i {
+            color: var(--success);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .post-form {
+                max-width: 500px;
+            }
+            .photo-upload-preview {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+        }
+        @media (max-width: 768px) {
+            .post-form {
+                margin: var(--spacing-md);
+                padding: var(--spacing-md);
+            }
+            .form-buttons {
+                flex-direction: column;
+            }
+            .step-progress {
+                flex-wrap: wrap;
+            }
+            .step-progress span {
+                flex: none;
+                width: calc(50% - var(--spacing-sm));
+            }
+            .post-type-tabs li {
+                padding: var(--spacing-sm);
+            }
+        }
+        @media (max-width: 480px) {
+            .post-form {
+                margin: var(--spacing-sm);
+            }
+            .step-progress span {
+                width: 100%;
+            }
+            .photo-upload-preview {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Additional Styling for Vibrancy */
+        .post-form h2 {
+            font-size: var(--font-size-md);
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .post-form h2 i {
+            color: var(--primary);
+        }
+        .form-group input:hover,
+        .form-group textarea:hover,
+        .form-group select:hover {
+            border-color: var(--secondary);
+        }
+        .form-group small {
+            font-size: var(--font-size-sm);
+            color: #666;
+            margin-top: var(--spacing-xs);
+            display: block;
+        }
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: var(--danger);
+        }
+        .form-group.error small {
+            color: var(--danger);
+        }
+    </style>
 </head>
 
 <body>
@@ -32,7 +581,6 @@
         </a>
         <div class="header-icons">
             <i class="fa-solid fa-message" title="Conversations"></i>
-            
             <i class="fas fa-bell" title="Notifications"></i>
             <i class="fas fa-trophy" title="Arts Leaderboard"></i>
             <i class="fas fa-question-circle" title="Help"></i>
@@ -63,21 +611,804 @@
                 </div>
             </a>
         </div>
-
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
-    
+        <!-- Default Post -->
+        <section class="post-form default active" aria-label="Default Post Form">
+            <h2><i class="fas fa-file-alt"></i> Create a Default Post</h2>
+            <form id="default-post-form">
+                <div class="form-group">
+                    <label for="default-title"><i class="fas fa-heading"></i> Title <span class="required">*</span></label>
+                    <input type="text" id="default-title" name="title" placeholder="e.g. How do I improve my shading technique?" required aria-required="true" maxlength="150">
+                    <small>Be specific and imagine you're asking a question to another artist (max 150 characters).</small>
+                </div>
+                <div class="form-group">
+                    <label for="default-subtitle"><i class="fas fa-subscript"></i> Subtitle</label>
+                    <input type="text" id="default-subtitle" name="subtitle" placeholder="e.g. Tips for digital painting beginners" maxlength="100">
+                    <small>Optional subtitle to provide context (max 100 characters).</small>
+                </div>
+                <div class="form-group">
+                    <label for="default-body"><i class="fas fa-align-left"></i> Body <span class="required">*</span></label>
+                    <div class="editor-toolbar">
+                        <button type="button" data-action="bold"><i class="fas fa-bold"></i></button>
+                        <button type="button" data-action="italic"><i class="fas fa-italic"></i></button>
+                        <button type="button" data-action="underline"><i class="fas fa-underline"></i></button>
+                        <button type="button" data-action="link"><i class="fas fa-link"></i></button>
+                        <button type="button" data-action="image"><i class="fas fa-image"></i></button>
+                        <button type="button" data-action="code"><i class="fas fa-code"></i></button>
+                    </div>
+                    <div id="default-editor" class="editor" contenteditable="true" aria-label="Post body editor" data-placeholder="Write your post content here..."></div>
+                    <small>Provide detailed information to engage the community.</small>
+                </div>
+                <div class="form-group">
+                    <label for="default-tags"><i class="fas fa-tags"></i> Tags <span class="required">*</span></label>
+                    <div class="tag-container" id="default-tag-container">
+                        <input type="text" class="tag-input" id="default-tags" placeholder="e.g. digital-art, painting, technique" aria-label="Enter tags">
+                    </div>
+                    <small>Add up to 5 tags to describe your post (press Enter).</small>
+                </div>
+                <div class="form-group">
+                    <label for="default-category"><i class="fas fa-folder"></i> Category</label>
+                    <select id="default-category" name="category">
+                        <option value="general">General</option>
+                        <option value="technique">Technique</option>
+                        <option value="inspiration">Inspiration</option>
+                        <option value="critique">Critique</option>
+                    </select>
+                    <small>Choose a category to organize your post.</small>
+                </div>
+                <div class="form-group">
+                    <label for="default-featured-image" class="file-label">
+                        <i class="fas fa-image"></i> Upload Featured Image
+                    </label>
+                    <input type="file" id="default-featured-image" name="featured-image" accept="image/*">
+                    <small>Upload an image to represent your post (optional).</small>
+                </div>
+                <div class="collaboration-section">
+                    <div class="toggle-section" data-target="default-collab-content">
+                        <h3><i class="fas fa-users"></i> Collaboration</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="toggle-content" id="default-collab-content">
+                        <div class="form-group">
+                            <label for="default-collaborators"><i class="fas fa-user-plus"></i> Add Collaborators</label>
+                            <input type="text" id="default-collaborators" placeholder="Enter usernames, separated by commas" aria-label="Collaborators">
+                            <small>Invite others to co-author this post.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="advanced-settings">
+                    <div class="toggle-section" data-target="default-advanced-content">
+                        <h3><i class="fas fa-cog"></i> Advanced Settings</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="toggle-content" id="default-advanced-content">
+                        <div class="form-group">
+                            <label for="default-visibility"><i class="fas fa-eye"></i> Visibility</label>
+                            <select id="default-visibility" name="visibility">
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                                <option value="friends">Friends Only</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="default-schedule"><i class="fas fa-clock"></i> Schedule Post</label>
+                            <input type="datetime-local" id="default-schedule" name="schedule">
+                        </div>
+                        <div class="form-group">
+                            <label for="default-seo-title"><i class="fas fa-search"></i> SEO Title</label>
+                            <input type="text" id="default-seo-title" name="seo-title" placeholder="e.g. Shading Techniques for Artists">
+                        </div>
+                        <div class="form-group">
+                            <label for="default-meta-desc"><i class="fas fa-info-circle"></i> Meta Description</label>
+                            <textarea id="default-meta-desc" name="meta-desc" placeholder="A brief description for search engines"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="secondary" id="default-save-draft-btn"><i class="fas fa-save"></i> Save Draft</button>
+                    <button type="button" class="primary" id="default-preview-btn"><i class="fas fa-eye"></i> Preview</button>
+                    <button type="submit" class="primary" onclick="window.location.href='home.html'"><i class="fas fa-paper-plane"></i> Post</button>
+                </div>
+                <div class="preview-area" id="default-preview" style="display: none;"></div>
+                <div class="help-section">
+                    <h3><i class="fas fa-question-circle"></i> Posting Tips</h3>
+                    <ul>
+                        <li><i class="fas fa-lightbulb"></i> Use clear, engaging titles to attract attention.</li>
+                        <li><i class="fas fa-tag"></i> Add relevant tags for better discoverability.</li>
+                        <li><i class="fas fa-eye"></i> Preview your post to ensure it looks perfect.</li>
+                    </ul>
+                </div>
+            </form>
+        </section>
+
+        <!-- Photo Post -->
+        <section class="post-form photo" aria-label="Photo Post Form">
+            <div class="step-progress">
+                <span class="active"><i class="fas fa-upload"></i> Upload</span>
+                <span><i class="fas fa-crop"></i> Crop</span>
+                <span><i class="fas fa-edit"></i> Edit</span>
+                <span><i class="fas fa-info-circle"></i> Details</span>
+            </div>
+            <div class="step step-upload active photo-step-container">
+                <h2><i class="fas fa-camera"></i> Upload Photos</h2>
+                <div class="form-group">
+                    <label for="photo-upload"><i class="fas fa-upload"></i> Select Photos <span class="required">*</span></label>
+                    <input type="file" id="photo-upload" name="photo-upload" accept="image/*" multiple required aria-required="true">
+                    <small>Upload up to 10 images (JPG, PNG).</small>
+                </div>
+                <div class="photo-upload-preview" id="photo-upload-preview"></div>
+                <div class="form-buttons">
+                    <button type="button" class="primary next-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+            </div>
+            <div class="step step-crop photo-step-container">
+                <h2><i class="fas fa-crop"></i> Crop Photos</h2>
+                <div class="form-group">
+                    <label><i class="fas fa-ruler"></i> Crop Interface</label>
+                    <div class="crop-container" id="crop-container">
+                        <div class="crop-grid">
+                            <div></div><div></div><div></div>
+                            <div></div><div></div><div></div>
+                            <div></div><div></div><div></div>
+                        </div>
+                    </div>
+                    <select id="photo-aspect-ratio" name="aspect-ratio">
+                        <option value="free">Free</option>
+                        <option value="1:1">1:1 (Square)</option>
+                        <option value="4:3">4:3</option>
+                        <option value="16:9">16:9</option>
+                    </select>
+                    <small>Choose an aspect ratio or crop freely.</small>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="secondary prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button type="button" class="primary next-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+            </div>
+            <div class="step step-edit photo-step-container">
+                <h2><i class="fas fa-edit"></i> Edit Photos</h2>
+                <div class="form-group">
+                    <label><i class="fas fa-sliders-h"></i> Filters</label>
+                    <div class="filter-options">
+                        <span class="filter-option" data-filter="normal">Normal</span>
+                        <span class="filter-option" data-filter="sepia">Sepia</span>
+                        <span class="filter-option" data-filter="grayscale">Grayscale</span>
+                        <span class="filter-option" data-filter="vintage">Vintage</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-adjust"></i> Adjustments</label>
+                    <div class="adjustment-options">
+                        <div>
+                            <label>Brightness</label>
+                            <input type="range" min="0" max="100" value="50" data-adjust="brightness">
+                        </div>
+                        <div>
+                            <label>Contrast</label>
+                            <input type="range" min="0" max="100" value="50" data-adjust="contrast">
+                        </div>
+                        <div>
+                            <label>Saturation</label>
+                            <input type="range" min="0" max="100" value="50" data-adjust="saturation">
+                        </div>
+                    </div>
+                </div>
+                <div class="edit-container" id="edit-container"></div>
+                <div class="form-buttons">
+                    <button type="button" class="secondary prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button type="button" class="primary next-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+            </div>
+            <div class="step step-details photo-step-container">
+                <h2><i class="fas fa-info-circle"></i> Add Details</h2>
+                <form id="photo-post-form">
+                    <div class="form-group">
+                        <label for="photo-title"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="photo-title" name="title" placeholder="e.g. Sunset Over the Mountains">
+                        <small>Optional title for your photo post.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo-description"><i class="fas fa-align-left"></i> Description</label>
+                        <textarea id="photo-description" name="description" placeholder="Describe your photos..."></textarea>
+                        <small>Share the story behind your photos.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo-feeling"><i class="fas fa-smile"></i> Feeling</label>
+                        <input type="text" id="photo-feeling" name="feeling" placeholder="e.g. 😊 Peaceful">
+                        <small>Add an emoji or describe your mood.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo-location"><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="photo-location" name="location" placeholder="e.g. Colorado, USA">
+                        <small>Optional location where photos were taken.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo-tags"><i class="fas fa-tags"></i> Tags</label>
+                        <div class="tag-container" id="photo-tag-container">
+                            <input type="text" class="tag-input" id="photo-tags" placeholder="e.g. photography, nature, art" aria-label="Enter tags">
+                        </div>
+                        <small>Add up to 5 tags (press Enter).</small>
+                    </div>
+                    <div class="collaboration-section">
+                        <div class="toggle-section" data-target="photo-collab-content">
+                            <h3><i class="fas fa-users"></i> Collaboration</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="toggle-content" id="photo-collab-content">
+                            <div class="form-group">
+                                <label for="photo-collaborators"><i class="fas fa-user-plus"></i> Add Collaborators</label>
+                                <input type="text" id="photo-collaborators" placeholder="Enter usernames, separated by commas" aria-label="Collaborators">
+                                <small>Invite others to co-create this post.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advanced-settings">
+                        <div class="toggle-section" data-target="photo-advanced-content">
+                            <h3><i class="fas fa-cog"></i> Advanced Settings</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="toggle-content" id="photo-advanced-content">
+                            <div class="form-group">
+                                <label for="photo-visibility"><i class="fas fa-eye"></i> Visibility</label>
+                                <select id="photo-visibility" name="visibility">
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                    <option value="friends">Friends Only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="photo-schedule"><i class="fas fa-clock"></i> Schedule Post</label>
+                                <input type="datetime-local" id="photo-schedule" name="schedule">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="secondary prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button type="button" class="secondary" id="photo-save-draft-btn"><i class="fas fa-save"></i> Save Draft</button>
+                        <button type="button" class="primary" id="photo-preview-btn"><i class="fas fa-eye"></i> Preview</button>
+                        <button type="submit" class="primary" onclick="window.location.href='home.html'"><i class="fas fa-share"></i> Share</button>
+                    </div>
+                    <div class="preview-area" id="photo-preview" style="display: none;"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Video Post -->
+        <section class="post-form video" aria-label="Video Post Form">
+            <div class="step-progress">
+                <span class="active"><i class="fas fa-upload"></i> Upload</span>
+                <span><i class="fas fa-edit"></i> Edit</span>
+                <span><i class="fas fa-info-circle"></i> Details</span>
+            </div>
+            <div class="step step-upload active">
+                <h2><i class="fas fa-video"></i> Upload Video</h2>
+                <div class="form-group">
+                    <label for="video-upload"><i class="fas fa-upload"></i> Select Video <span class="required">*</span></label>
+                    <input type="file" id="video-upload" name="video-upload" accept="video/*" required aria-required="true">
+                    <small>Upload a video (MP4, AVI, up to 100MB).</small>
+                </div>
+                <div class="video-preview" id="video-upload-preview"></div>
+                <div class="form-buttons">
+                    <button type="button" class="primary next-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+            </div>
+            <div class="step step-edit">
+                <h2><i class="fas fa-edit"></i> Edit Video</h2>
+                <div class="form-group">
+                    <label><i class="fas fa-tools"></i> Video Editor</label>
+                    <div class="video-tools">
+                        <span class="video-tool" data-tool="trim"><i class="fas fa-cut"></i> Trim</span>
+                        <span class="video-tool" data-tool="text"><i class="fas fa-font"></i> Text</span>
+                        <span class="video-tool" data-tool="transition"><i class="fas fa-exchange-alt"></i> Transition</span>
+                        <span class="video-tool" data-tool="filter"><i class="fas fa-sliders-h"></i> Filter</span>
+                    </div>
+                    <div class="video-timeline" id="video-timeline">Timeline Placeholder</div>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="secondary prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button type="button" class="primary next-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+            </div>
+            <div class="step step-details">
+                <h2><i class="fas fa-info-circle"></i> Add Details</h2>
+                <form id="video-post-form">
+                    <div class="form-group">
+                        <label for="video-title"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="video-title" name="title" placeholder="e.g. Speed Painting Tutorial">
+                        <small>Optional title for your video.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="video-description"><i class="fas fa-align-left"></i> Description</label>
+                        <textarea id="video-description" name="description" placeholder="Describe your video..."></textarea>
+                        <small>Share the context or story of your video.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="video-tags"><i class="fas fa-tags"></i> Tags</label>
+                        <div class="tag-container" id="video-tag-container">
+                            <input type="text" class="tag-input" id="video-tags" placeholder="e.g. video, art, tutorial" aria-label="Enter tags">
+                        </div>
+                        <small>Add up to 5 tags (press Enter).</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="video-thumbnail"><i class="fas fa-image"></i> Thumbnail</label>
+                        <input type="file" id="video-thumbnail" name="thumbnail" accept="image/*">
+                        <small>Choose a custom thumbnail (optional).</small>
+                    </div>
+                    <div class="collaboration-section">
+                        <div class="toggle-section" data-target="video-collab-content">
+                            <h3><i class="fas fa-users"></i> Collaboration</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="toggle-content" id="video-collab-content">
+                            <div class="form-group">
+                                <label for="video-collaborators"><i class="fas fa-user-plus"></i> Add Collaborators</label>
+                                <input type="text" id="video-collaborators" placeholder="Enter usernames, separated by commas" aria-label="Collaborators">
+                                <small>Invite others to co-create this video.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advanced-settings">
+                        <div class="toggle-section" data-target="video-advanced-content">
+                            <h3><i class="fas fa-cog"></i> Advanced Settings</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="toggle-content" id="video-advanced-content">
+                            <div class="form-group">
+                                <label for="video-visibility"><i class="fas fa-eye"></i> Visibility</label>
+                                <select id="video-visibility" name="visibility">
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                    <option value="friends">Friends Only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="video-schedule"><i class="fas fa-clock"></i> Schedule Post</label>
+                                <input type="datetime-local" id="video-schedule" name="schedule">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="secondary prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button type="button" class="secondary" id="video-save-draft-btn"><i class="fas fa-save"></i> Save Draft</button>
+                        <button type="button" class="primary" id="video-preview-btn"><i class="fas fa-eye"></i> Preview</button>
+                        <button type="submit" class="primary" onclick="window.location.href='home.html'"><i class="fas fa-share"></i> Share</button>
+                    </div>
+                    <div class="preview-area" id="video-preview" style="display: none;"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Novel Post -->
+        <section class="post-form novel" aria-label="Novel Post Form">
+            <div class="step-progress">
+                <span class="active"><i class="fas fa-pen"></i> Write</span>
+                <span><i class="fas fa-info-circle"></i> Details</span>
+            </div>
+            <div class="step step-write active">
+                <h2><i class="fas fa-book"></i> Write Your Novel</h2>
+                <div class="form-group">
+                    <label><i class="fas fa-file-alt"></i> Pages</label>
+                    <div class="novel-pages-container" id="novel-pages">
+                        <div class="novel-page" data-page="1">
+                            <input type="text" class="page-title" placeholder="Chapter 1: The Beginning" aria-label="Page title">
+                            <div class="editor" contenteditable="true" data-placeholder="Start writing your novel here..." aria-label="Page content"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-nav">
+                    <button type="button" class="secondary prev-page btn-secondary"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="secondary" id="add-page-btn"><i class="fas fa-plus"></i> Add Page</button>
+                    <button type="button" class="secondary next-page btn-secondary"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="primary next-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+            </div>
+            <div class="step step-details">
+                <h2><i class="fas fa-info-circle"></i> Add Details</h2>
+                <form id="novel-post-form">
+                    <div class="form-group">
+                        <label for="novel-title"><i class="fas fa-heading"></i> Book Title <span class="required">*</span></label>
+                        <input type="text" id="novel-title" name="title" placeholder="e.g. The Chronicles of Art" required aria-required="true">
+                        <small>Give your novel a captivating title.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="novel-subtitle"><i class="fas fa-subscript"></i> Subtitle</label>
+                        <input type="text" id="novel-subtitle" name="subtitle" placeholder="e.g. A Journey Through Creativity">
+                        <small>Optional subtitle for additional context.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="novel-description"><i class="fas fa-align-left"></i> Description</label>
+                        <textarea id="novel-description" name="description" placeholder="Describe your novel..."></textarea>
+                        <small>Summarize your novel's theme or story.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="novel-tags"><i class="fas fa-tags"></i> Tags</label>
+                        <div class="tag-container" id="novel-tag-container">
+                            <input type="text" class="tag-input" id="novel-tags" placeholder="e.g. novel, fiction, art" aria-label="Enter tags">
+                        </div>
+                        <small>Add up to 5 tags (press Enter).</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="novel-cover"><i class="fas fa-image"></i> Cover Image</label>
+                        <input type="file" id="novel-cover" name="cover" accept="image/*">
+                        <small>Upload a cover image for your novel (optional).</small>
+                    </div>
+                    <div class="collaboration-section">
+                        <div class="toggle-section" data-target="novel-collab-content">
+                            <h3><i class="fas fa-users"></i> Collaboration</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="toggle-content" id="novel-collab-content">
+                            <div class="form-group">
+                                <label for="novel-collaborators"><i class="fas fa-user-plus"></i> Add Collaborators</label>
+                                <input type="text" id="novel-collaborators" placeholder="Enter usernames, separated by commas" aria-label="Collaborators">
+                                <small>Invite others to co-write your novel.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advanced-settings">
+                        <div class="toggle-section" data-target="novel-advanced-content">
+                            <h3><i class="fas fa-cog"></i> Advanced Settings</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="toggle-content" id="novel-advanced-content">
+                            <div class="form-group">
+                                <label for="novel-visibility"><i class="fas fa-eye"></i> Visibility</label>
+                                <select id="novel-visibility" name="visibility">
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                    <option value="friends">Friends Only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="novel-schedule"><i class="fas fa-clock"></i> Schedule Post</label>
+                                <input type="datetime-local" id="novel-schedule" name="schedule">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="secondary prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button type="button" class="secondary" id="novel-save-draft-btn"><i class="fas fa-save"></i> Save Draft</button>
+                        <button type="button" class="primary" id="novel-preview-btn"><i class="fas fa-eye"></i> Preview</button>
+                        <button type="submit" class="primary" onclick="window.location.href='home.html'"><i class="fas fa-share"></i> Share</button>
+                    </div>
+                    <div class="preview-area" id="novel-preview" style="display: none;"></div>
+                </form>
+            </div>
+        </section>
     </main>
 
     <!-- Right Sidebar -->
     <aside class="right-sidebar">
-       
+        <div class="post-type-tabs">
+            <h3><i class="fas fa-plus-circle"></i> Create Post</h3>
+            <ul>
+                <li data-type="default" class="active" aria-label="Default Post Tab"><i class="fas fa-file-alt"></i> Default</li>
+                <li data-type="photo" aria-label="Photo Post Tab"><i class="fas fa-image"></i> Photo</li>
+                <li data-type="video" aria-label="Video Post Tab"><i class="fas fa-video"></i> Video</li>
+                <li data-type="novel" aria-label="Novel Post Tab"><i class="fas fa-book"></i> Novel</li>
+            </ul>
+        </div>
+        <div class="sidebar-tips">
+            <h4><i class="fas fa-lightbulb"></i> Quick Tips</h4>
+            <p><i class="fas fa-pen"></i> Craft engaging titles to draw attention.</p>
+            <p><i class="fas fa-tags"></i> Use relevant tags for discoverability.</p>
+            <p><i class="fas fa-eye"></i> Preview your post before sharing.</p>
+            <p><i class="fas fa-users"></i> Collaborate to enhance creativity.</p>
+        </div>
     </aside>
 
-   
+    <script>
+        // State Management
+        const state = {
+            currentPostType: 'default',
+            photoStep: 0,
+            videoStep: 0,
+            novelStep: 0,
+            novelPage: 0,
+            tags: { default: [], photo: [], video: [], novel: [] },
+            drafts: { default: null, photo: null, video: null, novel: null }
+        };
 
+        // Utility Functions
+        const $ = selector => document.querySelector(selector);
+        const $$ = selector => document.querySelectorAll(selector);
+        const addClass = (el, cls) => el.classList.add(cls);
+        const removeClass = (el, cls) => el.classList.remove(cls);
+        const toggleClass = (el, cls, condition) => {
+            if (condition) {
+                el.classList.add(cls);
+            } else {
+                el.classList.remove(cls);
+            }
+        };
+
+        // Tab Switching
+        $$('.post-type-tabs li').forEach(tab => {
+            tab.addEventListener('click', () => {
+                $$('.post-type-tabs li').forEach(t => removeClass(t, 'active'));
+                $$('.post-form').forEach(f => removeClass(f, 'active'));
+                addClass(tab, 'active');
+                state.currentPostType = tab.dataset.type;
+                addClass($(`.post-form.${state.currentPostType}`), 'active');
+            });
+        });
+
+        // Step Navigation
+        function setupSteps(formSelector, stepCount) {
+            const steps = $$(`${formSelector} .step`);
+            const progress = $$(`${formSelector} .step-progress span`);
+            const nextBtns = $$(`${formSelector} .next-btn`);
+            const prevBtns = $$(`${formSelector} .prev-btn`);
+            let currentStep = 0;
+
+            function updateStep() {
+                steps.forEach((s, i) => {
+                    toggleClass(s, 'active', i === currentStep);
+                    s.style.display = i === currentStep ? 'block' : 'none';
+                });
+                // Highlight current and previous steps as active
+                progress.forEach((p, i) => {
+                    toggleClass(p, 'active', i <= currentStep);
+                });
+            }
+
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (currentStep < stepCount - 1) {
+                        currentStep++;
+                        updateStep();
+                        if (formSelector === '.post-form.photo') state.photoStep = currentStep;
+                        if (formSelector === '.post-form.video') state.videoStep = currentStep;
+                        if (formSelector === '.post-form.novel') state.novelStep = currentStep;
+                    }
+                });
+            });
+
+            prevBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (currentStep > 0) {
+                        currentStep--;
+                        updateStep();
+                        if (formSelector === '.post-form.photo') state.photoStep = currentStep;
+                        if (formSelector === '.post-form.video') state.videoStep = currentStep;
+                        if (formSelector === '.post-form.novel') state.novelStep = currentStep;
+                    }
+                });
+            });
+
+            updateStep();
+        }
+
+        setupSteps('.post-form.photo', 4);
+        setupSteps('.post-form.video', 3);
+        setupSteps('.post-form.novel', 2);
+
+        // Tag Management
+        function setupTags(containerId, inputId) {
+            const container = $(`#${containerId}`);
+            const input = $(`#${inputId}`);
+            const type = containerId.split('-')[0];
+
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && input.value.trim() && state.tags[type].length < 5) {
+                    e.preventDefault();
+                    const tag = input.value.trim().toLowerCase();
+                    if (!state.tags[type].includes(tag)) {
+                        state.tags[type].push(tag);
+                        const tagEl = document.createElement('span');
+                        tagEl.className = 'tag';
+                        tagEl.innerHTML = `${tag} <span class="remove-tag" role="button" aria-label="Remove tag"><i class="fas fa-times"></i></span>`;
+                        container.insertBefore(tagEl, input);
+                        input.value = '';
+                        tagEl.querySelector('.remove-tag').addEventListener('click', () => {
+                            container.removeChild(tagEl);
+                            state.tags[type] = state.tags[type].filter(t => t !== tag);
+                        });
+                    }
+                }
+            });
+        }
+
+        setupTags('default-tag-container', 'default-tags');
+        setupTags('photo-tag-container', 'photo-tags');
+        setupTags('video-tag-container', 'video-tags');
+        setupTags('novel-tag-container', 'novel-tags');
+
+        // Editor Toolbar
+        $$('.editor-toolbar button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const action = btn.dataset.action;
+                switch (action) {
+                    case 'bold': document.execCommand('bold'); break;
+                    case 'italic': document.execCommand('italic'); break;
+                    case 'underline': document.execCommand('underline'); break;
+                    case 'link': {
+                        const url = prompt('Enter URL:');
+                        if (url) document.execCommand('createLink', false, url);
+                        break;
+                    }
+                    case 'image': {
+                        const url = prompt('Enter image URL:');
+                        if (url) document.execCommand('insertImage', false, url);
+                        break;
+                    }
+                    case 'code': document.execCommand('formatBlock', false, 'pre'); break;
+                }
+            });
+        });
+
+        // Photo Upload Preview
+        $('#photo-upload').addEventListener('change', e => {
+            const preview = $('#photo-upload-preview');
+            preview.innerHTML = '';
+            Array.from(e.target.files).slice(0, 10).forEach(file => {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                preview.appendChild(img);
+            });
+        });
+
+        // Video Upload Preview
+        $('#video-upload').addEventListener('change', e => {
+            const preview = $('#video-upload-preview');
+            preview.innerHTML = '';
+            const video = document.createElement('video');
+            video.src = URL.createObjectURL(e.target.files[0]);
+            video.controls = true;
+            preview.appendChild(video);
+        });
+
+        // Novel Page Navigation
+        const novelPages = $('#novel-pages');
+        const addPageBtn = $('#add-page-btn');
+        const prevPageBtn = $('.prev-page');
+        const nextPageBtn = $('.next-page');
+
+        addPageBtn.addEventListener('click', () => {
+            state.novelPage++;
+            const page = document.createElement('div');
+            page.className = 'novel-page';
+            page.dataset.page = state.novelPage + 1;
+            page.innerHTML = `
+                <input type="text" class="page-title" placeholder="Chapter ${state.novelPage + 1}: Title" aria-label="Page title">
+                <div class="editor" contenteditable="true" data-placeholder="Start writing your chapter here..." aria-label="Page content"></div>
+            `;
+            novelPages.appendChild(page);
+            updateNovelPages();
+        });
+
+        function updateNovelPages() {
+            $$('.novel-page').forEach((page, i) => {
+                page.style.display = i === state.novelPage ? 'block' : 'none';
+            });
+        }
+
+        prevPageBtn.addEventListener('click', () => {
+            if (state.novelPage > 0) {
+                state.novelPage--;
+                updateNovelPages();
+            }
+        });
+
+        nextPageBtn.addEventListener('click', () => {
+            if (state.novelPage < $$('.novel-page').length - 1) {
+                state.novelPage++;
+                updateNovelPages();
+            }
+        });
+
+        // Preview Functionality
+        function setupPreview(formId, previewId, previewBtnId) {
+            const form = $(`#${formId}`);
+            const preview = $(`#${previewId}`);
+            const previewBtn = $(`#${previewBtnId}`);
+            previewBtn.addEventListener('click', () => {
+                const data = new FormData(form);
+                let content = '<h3><i class="fas fa-eye"></i> Post Preview</h3>';
+                data.forEach((value, key) => {
+                    if (value) content += `<p><strong>${key.replace(/-/g, ' ')}:</strong> ${value}</p>`;
+                });
+                if (formId === 'default-post-form') {
+                    content += `<p><strong>Body:</strong> ${$('#default-editor').innerHTML}</p>`;
+                    content += `<p><strong>Tags:</strong> ${state.tags.default.join(', ')}</p>`;
+                }
+                if (formId === 'photo-post-form') {
+                    content += `<p><strong>Tags:</strong> ${state.tags.photo.join(', ')}</p>`;
+                }
+                if (formId === 'video-post-form') {
+                    content += `<p><strong>Tags:</strong> ${state.tags.video.join(', ')}</p>`;
+                }
+                if (formId === 'novel-post-form') {
+                    content += `<p><strong>Tags:</strong> ${state.tags.novel.join(', ')}</p>`;
+                    $$('.novel-page').forEach(p => {
+                        content += `<p><strong>${p.querySelector('.page-title').value}:</strong> ${p.querySelector('.editor').innerHTML}</p>`;
+                    });
+                }
+                preview.innerHTML = content;
+                preview.style.display = 'block';
+            });
+        }
+
+        setupPreview('default-post-form', 'default-preview', 'default-preview-btn');
+        setupPreview('photo-post-form', 'photo-preview', 'photo-preview-btn');
+        setupPreview('video-post-form', 'video-preview', 'video-preview-btn');
+        setupPreview('novel-post-form', 'novel-preview', 'novel-preview-btn');
+
+        // Draft Saving
+        $$('[id$="-save-draft-btn"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = state.currentPostType;
+                const form = $(`#${type}-post-form`) || $('#default-post-form');
+                const data = new FormData(form);
+                state.drafts[type] = Object.fromEntries(data);
+                if (type === 'default') state.drafts[type].body = $('#default-editor').innerHTML;
+                if (type === 'novel') {
+                    state.drafts[type].pages = Array.from($$('.novel-page')).map(p => ({
+                        title: p.querySelector('.page-title').value,
+                        content: p.querySelector('.editor').innerHTML
+                    }));
+                }
+                console.log(`Draft saved for ${type}:`, state.drafts[type]);
+            });
+        });
+
+        // Toggle Sections
+        $$('.toggle-section').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const target = $(`#${toggle.dataset.target}`);
+                toggleClass(target, 'active');
+                const icon = toggle.querySelector('i');
+                toggleClass(icon, 'fa-chevron-down');
+                toggleClass(icon, 'fa-chevron-up');
+            });
+        });
+
+        // Form Validation
+        $$('form').forEach(form => {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                let valid = true;
+                form.querySelectorAll('[required]').forEach(field => {
+                    const group = field.closest('.form-group');
+                    if (!field.value.trim()) {
+                        valid = false;
+                        addClass(group, 'error');
+                    } else {
+                        removeClass(group, 'error');
+                    }
+                });
+                if (valid) {
+                    console.log(`Submitting ${state.currentPostType} post`);
+                    form.reset();
+                    state.tags[state.currentPostType] = [];
+                    $(`#${state.currentPostType}-tag-container`).innerHTML = '<input type="text" class="tag-input" placeholder="e.g. art, digital, painting" aria-label="Enter tags">';
+                    setupTags(`${state.currentPostType}-tag-container`, `${state.currentPostType}-tags`);
+                } else {
+                    alert('Please fill all required fields.');
+                }
+            });
+        });
+
+        // Editor Placeholder
+        $$('.editor').forEach(editor => {
+            const placeholder = editor.dataset.placeholder;
+            editor.innerHTML = placeholder;
+            editor.addEventListener('focus', () => {
+                if (editor.innerHTML === placeholder) editor.innerHTML = '';
+            });
+            editor.addEventListener('blur', () => {
+                if (!editor.innerHTML.trim()) editor.innerHTML = placeholder;
+            });
+        });
+
+        // Initial Setup
+        updateNovelPages();
+    </script>
 </body>
 
 </html>
