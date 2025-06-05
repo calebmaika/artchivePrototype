@@ -27,6 +27,7 @@ body {
     display: grid;
     grid-template-columns: 240px 1fr 300px;
     min-height: 100vh;
+    width: 1300px;
 }
 
 /* Header */
@@ -1249,26 +1250,8 @@ header {
 }
 
 @media (max-width: 992px) {
-    body {
-        grid-template-columns: 1fr;
-    }
 
-    .left-sidebar,
-    .right-sidebar {
-        display: none;
-    }
 
-    header {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .search-bar {
-        order: 3;
-        width: 100%;
-        max-width: none;
-        margin: 10px 0;
-    }
 
     .header-icons {
         margin-left: 0;

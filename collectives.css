@@ -1,0 +1,276 @@
+/* Main Content Styles */
+.main-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Search and Filter Section */
+.filter-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-collectives {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-collectives input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-collectives input:focus {
+    border-color: #6c5ce7;
+}
+
+.filter-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-tag {
+    background-color: #f1f1f1;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-tag:hover {
+    background-color: #e0e0e0;
+}
+
+.filter-tag.active {
+    background-color: #6c5ce7;
+    color: white;
+}
+
+.date-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-filter input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Collectives List */
+.collectives-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.collective-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.collective-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.collective-header {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.collective-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.collective-info {
+    flex: 1;
+}
+
+.collective-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.collective-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.purple-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #6c5ce7;
+    border-radius: 50%;
+}
+
+.droplet-icon {
+    color: #00cec9;
+}
+
+.collective-activity {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.online-count {
+    color: #00b894;
+    font-weight: 500;
+}
+
+.last-activity {
+    color: #636e72;
+}
+
+.collective-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.collective-tag {
+    background-color: #f1f1f1;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.collective-tag:hover {
+    background-color: #6c5ce7;
+    color: white;
+}
+
+.channels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.channel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.channel-item:hover {
+    background-color: #f8f8f8;
+}
+
+.channel-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.channel-icon {
+    color: #636e72;
+    font-size: 14px;
+}
+
+.channel-name {
+    font-size: 14px;
+}
+
+.post-count {
+    background-color: #6c5ce7;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+/* Skeleton Loading */
+.skeleton-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-line {
+    height: 12px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}

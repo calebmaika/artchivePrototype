@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art Collective | ArtChive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="collective-view.css">
+    <link rel="stylesheet" href="test_design3.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="home.html" style="text-decoration: none;">
+            <div class="logo" title="Return Home">
+                <img src="favicon.png" alt="icon" width="25">
+                <span>ArtChive</span>
+            </div>
+        </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search artists, artworks, collectives...">
+        </div>
+        <a href="profile.html" style="text-decoration: none;">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Chernobog</span>
+                    <span class="user-handle">@chernobog_art</span>
+                    <span class="artist-type">Digital Artist | Character Designer</span>
+                </div>
+            </div>
+        </a>
+        <div class="header-icons">
+            <i class="fa-solid fa-message" title="Conversations"></i>
+            <i class="fas fa-bell" title="Notifications"></i>
+            <i class="fas fa-trophy" title="Arts Leaderboard"></i>
+            <i class="fas fa-question-circle" title="Help"></i>
+            <i class="fas fa-cog" title="Settings"></i>
+        </div>
+    </header>
+
+    <!-- left sidebar -->
+    <aside class="left-sidebar">
+        <div class="collective-header">
+            <h3 class="collective-title">Art Collective</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    
+        <!-- Events Section -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span>EVENTS</span>
+                <i class="fas fa-plus" title="Create Event"></i>
+            </div>
+            <div class="channel event">
+                <i class="fas fa-calendar-day"></i>
+                <span>Community Exhibition</span>
+            </div>
+            <div class="channel event">
+                <i class="fas fa-calendar-day"></i>
+                <span>Live Critique Session</span>
+            </div>
+        </div>
+    
+        <!-- Text Channels Section -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span>POST CHANNELS</span>
+                <i class="fas fa-plus" title="Create Channel"></i>
+            </div>
+            <div class="channel active">
+                <i class="fas fa-hashtag"></i>
+                <span>general</span>
+            </div>
+            <div class="channel">
+                <i class="fas fa-hashtag"></i>
+                <span>digital-art</span>
+            </div>
+            <div class="channel">
+                <i class="fas fa-hashtag"></i>
+                <span>traditional-art</span>
+            </div>
+            <div class="channel">
+                <i class="fas fa-hashtag"></i>
+                <span>photography</span>
+            </div>
+            <div class="channel">
+                <i class="fas fa-hashtag"></i>
+                <span>resources</span>
+            </div>
+        </div>
+    
+        <!-- Media Channels Section -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span>MEDIA CHANNELS</span>
+                <i class="fas fa-plus" title="Create Channel"></i>
+            </div>
+            <div class="channel">
+                <i class="fas fa-headphones"></i>
+                <span>voice-chat</span>
+            </div>
+            <div class="channel">
+                <i class="fas fa-video"></i>
+                <span>live-streams</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Collective Banner -->
+        <div class="collective-banner" style="background-image: url('https://picsum.photos/1200/300');"></div>
+        
+        <!-- Collective Header Info -->
+        <div class="collective-info">
+            <h1>Art Collective</h1>
+            <div class="collective-meta">
+                <span class="collective-type"><i class="fas fa-lock"></i> Private Group</span>
+                <span class="member-count"><i class="fas fa-users"></i> 1,245 members</span>
+            </div>
+            <div class="artist-types">
+                <span class="artist-type-tag">Digital Artists</span>
+                <span class="artist-type-tag">Painters</span>
+                <span class="artist-type-tag">Illustrators</span>
+                <span class="artist-type-tag">Character Designers</span>
+            </div>
+            <div class="member-preview">
+                <div class="members-list">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/66.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/88.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/99.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Member" class="member-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Member" class="member-avatar">
+                </div>
+                <div class="collective-actions">
+                    <button class="btn invite-btn"><i class="fas fa-user-plus"></i> Invite</button>
+                    <button class="btn share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    <div class="dropdown joined-dropdown">
+                        <button class="btn joined-btn"><i class="fas fa-check"></i> Joined <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-info-circle"></i> View Group Details</a>
+                            <a href="#"><i class="fas fa-sign-out-alt"></i> Leave Group</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Create Post -->
+        <div class="create-post">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="post-avatar">
+            <div class="post-input">
+                <input type="text" placeholder="Write something...">
+                <div class="post-options">
+                    <button class="post-option"><i class="fas fa-user-secret"></i> Anonymous</button>
+                    <button class="post-option"><i class="fas fa-poll"></i> Poll</button>
+                    <button class="post-option"><i class="fas fa-smile"></i> Feeling/Activity</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Posts -->
+        <div class="post">
+            <div class="post-header">
+                <div class="post-user">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="post-avatar">
+                    <div class="post-user-info">
+                        <span class="post-user-name">Jane Doe</span>
+                        <span class="post-user-handle">@janedoe_art</span>
+                        <span class="post-user-type">Digital Artist | Illustrator</span>
+                    </div>
+                </div>
+                <div class="post-options">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Check out my latest digital painting! I experimented with some new brushes and techniques.</p>
+                <div class="post-media photo-media">
+                    <img src="https://picsum.photos/800/500" alt="Artwork" class="artwork-image">
+                    <div class="photo-comment-dot" style="top: 30%; left: 40%;"></div>
+                    <div class="photo-comment-dot" style="top: 60%; left: 70%;"></div>
+                </div>
+                <div class="photo-comment" style="display: none;">
+                    <div class="comment">
+                        <span class="comment-author">John Smith</span>
+                        <span class="comment-text">Love the lighting here!</span>
+                        <span class="comment-time">2h ago</span>
+                    </div>
+                </div>
+                <div class="photo-comment" style="display: none;">
+                    <div class="comment">
+                        <span class="comment-author">Alice Johnson</span>
+                        <span class="comment-text">The texture on this part is amazing</span>
+                        <span class="comment-time">1h ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-actions">
+                <button class="post-action"><i class="fas fa-heart"></i> Like</button>
+                <button class="post-action"><i class="fas fa-comment"></i> Comment</button>
+                <button class="post-action"><i class="fas fa-star"></i> Critique</button>
+                <button class="post-action"><i class="fas fa-share"></i> Share</button>
+            </div>
+            <div class="post-comments">
+                <div class="comment">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="User" class="comment-avatar">
+                    <div class="comment-content">
+                        <span class="comment-author">John Smith</span>
+                        <span class="comment-text">This is incredible work! The colors are so vibrant.</span>
+                        <span class="comment-time">2h ago</span>
+                        <div class="comment-actions">
+                            <button class="comment-action">Like</button>
+                            <button class="comment-action">Reply</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment reply">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="User" class="comment-avatar">
+                    <div class="comment-content">
+                        <span class="comment-author">Sarah Miller</span>
+                        <span class="comment-text">I agree, the color palette is perfect for this piece.</span>
+                        <span class="comment-time">1h ago</span>
+                        <div class="comment-actions">
+                            <button class="comment-action">Like</button>
+                            <button class="comment-action">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Novel Post -->
+        <div class="post">
+            <div class="post-header">
+                <div class="post-user">
+                    <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="User" class="post-avatar">
+                    <div class="post-user-info">
+                        <span class="post-user-name">Robert Johnson</span>
+                        <span class="post-user-handle">@robert_writes</span>
+                        <span class="post-user-type">Literary Artist | Novelist</span>
+                    </div>
+                </div>
+                <div class="post-options">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Here's the first chapter of my new novel. Would love to hear your thoughts!</p>
+                <div class="post-media novel-media">
+                    <h3>Chapter 1: The Awakening</h3>
+                    <p>The city slept under a blanket of stars, unaware of the storm that approached. <span class="highlighted-text">Elias stood at the edge of the rooftop, his coat flapping in the wind like the wings of a trapped bird.</span> Below him, the streets pulsed with the rhythm of late-night revelers, their laughter rising like bubbles in champagne.</p>
+                    <p>He had come here to think, to escape the noise of his own mind, but the height only made his thoughts more dizzying. <span class="highlighted-text">The decision weighed on him like an anchor tied to his soul.</span> To jump would be to surrender, to step back would be to continue the fight - but what was the fight even for anymore?</p>
+                </div>
+                <div class="highlight-comment" style="display: none;">
+                    <div class="comment">
+                        <span class="comment-author">Jane Doe</span>
+                        <span class="comment-text">This metaphor is so powerful!</span>
+                        <span class="comment-time">3h ago</span>
+                    </div>
+                </div>
+                <div class="highlight-comment" style="display: none;">
+                    <div class="comment">
+                        <span class="comment-author">Mike Brown</span>
+                        <span class="comment-text">Really sets the tone for the character's internal struggle</span>
+                        <span class="comment-time">2h ago</span>
+                    </div>
+                </div>
+                <div class="novel-navigation">
+                    <button class="btn chapter-btn" disabled>Previous Chapter</button>
+                    <button class="btn chapter-btn">Next Chapter</button>
+                </div>
+            </div>
+            <div class="post-actions">
+                <button class="post-action"><i class="fas fa-heart"></i> Like</button>
+                <button class="post-action"><i class="fas fa-comment"></i> Comment</button>
+                <button class="post-action"><i class="fas fa-star"></i> Critique</button>
+                <button class="post-action"><i class="fas fa-share"></i> Share</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- right sidebar -->
+    <aside class="right-sidebar">
+        <div class="sidebar-section">
+            <h3>About</h3>
+            <p>A collective of digital and traditional artists sharing their work, techniques, and supporting each other's creative journeys.</p>
+        </div>
+        <div class="sidebar-section">
+            <h3>Rules</h3>
+            <ol class="rules-list">
+                <li>Be respectful to all members</li>
+                <li>Constructive criticism only</li>
+                <li>No spam or self-promotion</li>
+                <li>Keep content art-related</li>
+                <li>Credit original artists when sharing</li>
+            </ol>
+        </div>
+        <div class="sidebar-section">
+            <h3>Details</h3>
+            <div class="detail-item">
+                <i class="fas fa-lock"></i>
+                <span>Private Group</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-eye"></i>
+                <span>Visible to Members Only</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-calendar"></i>
+                <span>Created: June 12, 2022</span>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h3>Active Members <span class="online-count">12 online</span></h3>
+            <div class="active-members">
+                <div class="member">
+                    <div class="member-avatar-container">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member" class="member-avatar">
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="member-info">
+                        <span class="member-name">Jane Doe</span>
+                        <span class="member-handle">@janedoe_art</span>
+                        <div class="member-stats">
+                            <span class="reputation"><i class="fa-solid fa-circle-dot" style="color: var(--secondary);"></i> 245</span>
+                            <span class="drips"><i class="fas fa-tint" style="color: var(--primary);"></i> 78</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-avatar-container">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Member" class="member-avatar">
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="member-info">
+                        <span class="member-name">John Smith</span>
+                        <span class="member-handle">@johnsmithart</span>
+                        <div class="member-stats">
+                            <span class="reputation"><i class="fa-solid fa-circle-dot" style="color: var(--secondary);"></i> 189</span>
+                            <span class="drips"><i class="fas fa-tint" style="color: var(--primary);"></i> 56</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-avatar-container">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Member" class="member-avatar">
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="member-info">
+                        <span class="member-name">Sarah Miller</span>
+                        <span class="member-handle">@sarahmiller_art</span>
+                        <div class="member-stats">
+                            <span class="reputation"><i class="fa-solid fa-circle-dot" style="color: var(--secondary);"></i> 312</span>
+                            <span class="drips"><i class="fas fa-tint" style="color: var(--primary);"></i> 92</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-avatar-container">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Member" class="member-avatar">
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="member-info">
+                        <span class="member-name">Robert Johnson</span>
+                        <span class="member-handle">@robert_writes</span>
+                        <div class="member-stats">
+                            <span class="reputation"><i class="fa-solid fa-circle-dot" style="color: var(--secondary);"></i> 178</span>
+                            <span class="drips"><i class="fas fa-tint" style="color: var(--primary);"></i> 43</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn view-all-btn">View All Members</button>
+        </div>
+    </aside>
+
+    <script src="collective-view.js"></script>
+</body>
+</html>
