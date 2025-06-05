@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Profile | ArtChive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="test_design3.css">
@@ -137,12 +136,23 @@
             aspect-ratio: 1;
             border-radius: 8px;
             overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: filter 0.2s;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1.1);
         }
 
         .avatar-grid {
@@ -175,6 +185,12 @@
             border-radius: 8px;
             padding: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .collective-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .collective-header {
@@ -307,7 +323,7 @@
             border-color: #1a73e8;
         }
 
-        .hair-styles, .eye-styles, .accessories {
+        .hair-styles, .eye-styles, .accessories, .ai-prompt-section {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 15px;
@@ -373,6 +389,40 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+        }
+
+        .ai-prompt-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ai-prompt-input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .ai-generate-btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            background: #1a73e8;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .ai-generate-btn:hover {
+            background: #1557b0;
+            transform: scale(1.05);
         }
 
         .portfolio-builder {
@@ -473,6 +523,12 @@
             border-radius: 8px;
             overflow: hidden;
             aspect-ratio: 1;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .featured-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .featured-item.large {
@@ -484,6 +540,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: filter 0.2s;
+        }
+
+        .featured-item:hover img {
+            filter: brightness(1.1);
         }
 
         .artwork-info {
@@ -518,6 +579,23 @@
             border-radius: 8px;
             overflow: hidden;
             aspect-ratio: 3/4;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .series-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .series-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.2s;
+        }
+
+        .series-item:hover img {
+            filter: brightness(1.1);
         }
 
         .process-timeline {
@@ -538,6 +616,13 @@
             border-radius: 8px;
             object-fit: cover;
             margin-bottom: 10px;
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+
+        .process-step img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .step-info h4 {
@@ -580,11 +665,12 @@
             align-items: center;
             gap: 8px;
             font-weight: 500;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
         .create-collective-btn:hover {
             background: #1557b0;
+            transform: scale(1.05);
         }
 
         .collectives-grid {
@@ -598,6 +684,12 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .collective-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .collective-header {
@@ -672,11 +764,13 @@
             color: #666;
             font-size: 14px;
             margin-bottom: 5px;
+            transition: background-color 0.2s, color 0.2s, transform 0.2s;
         }
 
         .channel:hover {
             background: #e8f0fe;
             color: #1a73e8;
+            transform: scale(1.05);
         }
 
         .channel.active {
@@ -687,6 +781,11 @@
         .channel i {
             width: 16px;
             text-align: center;
+            transition: color 0.2s;
+        }
+
+        .channel:hover i {
+            color: #1a73e8;
         }
 
         .unread {
@@ -726,16 +825,22 @@
             justify-content: center;
             gap: 8px;
             color: #333;
-            transition: all 0.2s;
+            transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
         }
 
         .action-btn:hover {
             background: #f0f0f0;
             border-color: #ccc;
+            transform: scale(1.05);
         }
 
         .action-btn i {
             color: #1a73e8;
+            transition: color 0.2s;
+        }
+
+        .action-btn:hover i {
+            color: #1557b0;
         }
     </style>
 </head>
@@ -763,7 +868,6 @@
         </a>
         <div class="header-icons">
             <i class="fa-solid fa-message" title="Conversations"></i>
-
             <i class="fas fa-bell" title="Notifications"></i>
             <i class="fas fa-trophy" title="Arts Leaderboard"></i>
             <i class="fas fa-question-circle" title="Help"></i>
@@ -772,7 +876,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="profile-content">
+    <main class="main-content">
         <div class="profile-header">
             <div class="profile-info">
                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png" alt="Profile Picture" class="profile-avatar">
@@ -808,12 +912,13 @@
 
         <div class="profile-tabs">
             <div class="profile-tab active" data-tab="timeline">Timeline</div>
+            <div class="profile-tab" data-tab="gallery">Works</div>
+            <div class="profile-tab" data-tab="avatar">Avatar</div>
             <div class="profile-tab" data-tab="collectives">Collectives</div>
         </div>
 
         <!-- Timeline Tab -->
         <div class="tab-content active" id="timeline">
-            <!-- Reuse the post structure from home.html -->
             <div class="post">
                 <div class="post-header">
                     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png" alt="User Avatar" class="post-avatar">
@@ -855,6 +960,264 @@
             </div>
         </div>
 
+        <!-- Gallery Tab -->
+        <div class="tab-content" id="gallery">
+            <div class="portfolio-builder">
+                <div class="portfolio-toolbar">
+                    <div class="toolbar-section">
+                        <button class="toolbar-button" title="Add Section">
+                            <i class="fas fa-plus"></i> Add Section
+                        </button>
+                        <button class="toolbar-button" title="Grid Layout">
+                            <i class="fas fa-th"></i> Grid
+                        </button>
+                        <button class="toolbar-button" title="Masonry Layout">
+                            <i class="fas fa-th-large"></i> Masonry
+                        </button>
+                        <button class="toolbar-button" title="Carousel Layout">
+                            <i class="fas fa-images"></i> Carousel
+                        </button>
+                    </div>
+                    <div class="toolbar-section">
+                        <button class="toolbar-button" title="Upload Artwork">
+                            <i class="fas fa-upload"></i> Upload
+                        </button>
+                        <button class="toolbar-button" title="Import from Gallery">
+                            <i class="fas fa-folder-open"></i> Import
+                        </button>
+                    </div>
+                </div>
+
+                <div class="portfolio-content">
+                    <div class="portfolio-section featured">
+                        <div class="section-header">
+                            <h3>Featured Works</h3>
+                            <div class="section-actions">
+                                <button class="section-button"><i class="fas fa-ellipsis-h"></i></button>
+                                <button class="section-button"><i class="fas fa-arrows-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="featured-grid">
+                            <div class="featured-item large">
+                                <img src="https://picsum.photos/800/600?random=1" alt="Featured Artwork">
+                                <div class="artwork-info">
+                                    <h4>Digital Dreams</h4>
+                                    <p>Digital Art • 2024</p>
+                                </div>
+                            </div>
+                            <div class="featured-item">
+                                <img src="https://picsum.photos/400/400?random=2" alt="Artwork">
+                                <div class="artwork-info">
+                                    <h4>Abstract Thoughts</h4>
+                                    <p>Abstract • 2024</p>
+                                </div>
+                            </div>
+                            <div class="featured-item">
+                                <img src="https://picsum.photos/400/400?random=3" alt="Artwork">
+                                <div class="artwork-info">
+                                    <h4>Color Theory</h4>
+                                    <p>Digital Art • 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-section series">
+                        <div class="section-header">
+                            <h3>Character Design Series</h3>
+                            <div class="section-actions">
+                                <button class="section-button"><i class="fas fa-ellipsis-h"></i></button>
+                                <button class="section-button"><i class="fas fa-arrows-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="series-grid">
+                            <div class="series-item">
+                                <img src="https://picsum.photos/300/400?random=4" alt="Character Design">
+                                <div class="artwork-info">
+                                    <h4>Character 1</h4>
+                                    <p>Concept Art • 2024</p>
+                                </div>
+                            </div>
+                            <div class="series-item">
+                                <img src="https://picsum.photos/300/400?random=5" alt="Character Design">
+                                <div class="artwork-info">
+                                    <h4>Character 2</h4>
+                                    <p>Concept Art • 2024</p>
+                                </div>
+                            </div>
+                            <div class="series-item">
+                                <img src="https://picsum.photos/300/400?random=6" alt="Character Design">
+                                <div class="artwork-info">
+                                    <h4>Character 3</h4>
+                                    <p>Concept Art • 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-section process">
+                        <div class="section-header">
+                            <h3>Work in Progress</h3>
+                            <div class="section-actions">
+                                <button class="section-button"><i class="fas fa-ellipsis-h"></i></button>
+                                <button class="section-button"><i class="fas fa-arrows-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="process-timeline">
+                            <div class="process-step">
+                                <img src="https://picsum.photos/200/200?random=7" alt="Sketch">
+                                <div class="step-info">
+                                    <h4>Initial Sketch</h4>
+                                    <p>Day 1</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <img src="https://picsum.photos/200/200?random=8" alt="Color Blocking">
+                                <div class="step-info">
+                                    <h4>Color Blocking</h4>
+                                    <p>Day 2</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <img src="https://picsum.photos/200/200?random=9" alt="Final Details">
+                                <div class="step-info">
+                                    <h4>Final Details</h4>
+                                    <p>Day 3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Avatar Tab -->
+        <div class="tab-content" id="avatar">
+            <div class="avatar-customization">
+                <div class="avatar-preview">
+                    <div class="current-avatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia" alt="Current Avatar" id="avatar-preview">
+                    </div>
+                    <div class="avatar-actions">
+                        <button class="avatar-button save-avatar"><i class="fas fa-save"></i> Save Avatar</button>
+                        <button class="avatar-button reset-avatar"><i class="fas fa-undo"></i> Reset Changes</button>
+                    </div>
+                </div>
+                
+                <div class="customization-options">
+                    <div class="option-section">
+                        <h3><i class="fas fa-robot"></i> AI Prompt</h3>
+                        <div class="ai-prompt-section">
+                            <input type="text" class="ai-prompt-input" placeholder="Enter AI avatar prompt (e.g., 'futuristic cyborg', 'fantasy elf')">
+                            <button class="ai-generate-btn"><i class="fas fa-magic"></i> Generate Avatar</button>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-paint-brush"></i> Avatar Style</h3>
+                        <div class="style-options">
+                            <div class="style-option active" data-style="avataaars">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=style1" alt="Avataaars">
+                                <span>Avataaars</span>
+                            </div>
+                            <div class="style-option" data-style="bottts">
+                                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=style2" alt="Bottts">
+                                <span>Bottts</span>
+                            </div>
+                            <div class="style-option" data-style="pixel-art">
+                                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=style3" alt="Pixel Art">
+                                <span>Pixel Art</span>
+                            </div>
+                            <div class="style-option" data-style="adventurer">
+                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=style4" alt="Adventurer">
+                                <span>Adventurer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-user"></i> Skin Tone</h3>
+                        <div class="skin-tones">
+                            <div class="skin-tone" style="background: #FFDBAC;" data-tone="light"></div>
+                            <div class="skin-tone" style="background: #EDB98A;" data-tone="medium-light"></div>
+                            <div class="skin-tone" style="background: #D08B5B;" data-tone="medium"></div>
+                            <div class="skin-tone" style="background: #AE5D29;" data-tone="medium-dark"></div>
+                            <div class="skin-tone" style="background: #614335;" data-tone="dark"></div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-cut"></i> Hair Style</h3>
+                        <div class="hair-styles">
+                            <div class="style-option" data-style="short">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair1&hair=shortHair" alt="Short Hair">
+                                <span>Short</span>
+                            </div>
+                            <div class="style-option" data-style="long">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair2&hair=longHair" alt="Long Hair">
+                                <span>Long</span>
+                            </div>
+                            <div class="style-option" data-style="bald">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair3&hair=bald" alt="Bald">
+                                <span>Bald</span>
+                            </div>
+                            <div class="style-option" data-style="mohawk">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hair4&hair=mohawk" alt="Mohawk">
+                                <span>Mohawk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-palette"></i> Hair Color</h3>
+                        <div class="color-options">
+                            <div class="color-option" style="background: #000000;" data-color="black"></div>
+                            <div class="color-option" style="background: #4A3000;" data-color="brown"></div>
+                            <div class="color-option" style="background: #C68642;" data-color="blonde"></div>
+                            <div class="color-option" style="background: #FF0000;" data-color="red"></div>
+                            <div class="color-option" style="background: #800080;" data-color="purple"></div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-smile"></i> Facial Features</h3>
+                        <div class="feature-options">
+                            <div class="style-option" data-feature="smile">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=face1&mouth=smile" alt="Smile">
+                                <span>Smile</span>
+                            </div>
+                            <div class="style-option" data-feature="serious">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=face2&mouth=serious" alt="Serious">
+                                <span>Serious</span>
+                            </div>
+                            <div class="style-option" data-feature="wink">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=face3&mouth=wink" alt="Wink">
+                                <span>Wink</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-glasses"></i> Accessories</h3>
+                        <div class="accessories">
+                            <div class="accessory-option" data-accessory="glasses">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=acc1&accessories=round" alt="Glasses">
+                                <span>Glasses</span>
+                            </div>
+                            <div class="accessory-option" data-accessory="sunglasses">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=acc2&accessories=wayfarers" alt="Sunglasses">
+                                <span>Sunglasses</span>
+                            </div>
+                            <div class="accessory-option" data-accessory="none">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=acc3&accessories=none" alt="None">
+                                <span>None</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Collectives Tab -->
         <div class="tab-content" id="collectives">
             <div class="collectives-container">
@@ -866,7 +1229,6 @@
                 </div>
 
                 <div class="collectives-grid">
-                    <!-- Digital Artists Collective -->
                     <div class="collective-card">
                         <div class="collective-header">
                             <img src="https://picsum.photos/100/100?random=1" alt="Collective" class="collective-avatar">
@@ -904,7 +1266,6 @@
                         </div>
                     </div>
 
-                    <!-- Concept Artists Collective -->
                     <div class="collective-card">
                         <div class="collective-header">
                             <img src="https://picsum.photos/100/100?random=2" alt="Collective" class="collective-avatar">
@@ -942,7 +1303,6 @@
                         </div>
                     </div>
 
-                    <!-- 3D Artists Collective -->
                     <div class="collective-card">
                         <div class="collective-header">
                             <img src="https://picsum.photos/100/100?random=3" alt="Collective" class="collective-avatar">
@@ -970,7 +1330,7 @@
                                 <span class="unread">2</span>
                             </div>
                             <div class="channel">
-                                <i class="fas fa-video"></i> voice-chat
+                                <i class="fas fa- video"></i> voice-chat
                                 <span class="participants">15</span>
                             </div>
                         </div>
@@ -988,71 +1348,10 @@
         // Tab switching functionality
         document.querySelectorAll('.profile-tab').forEach(tab => {
             tab.addEventListener('click', () => {
-                // Remove active class from all tabs and contents
                 document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab and corresponding content
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.tab).classList.add('active');
-            });
-        });
-
-        document.querySelectorAll('.skin-tone, .color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove active class from siblings
-                this.parentElement.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
-                // Add active class to clicked option
-                this.classList.add('active');
-                // Update preview (in a real app, this would update the avatar image)
-                updatePreview();
-            });
-        });
-
-        document.querySelectorAll('.style-option, .accessory-option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Toggle active class
-                this.classList.toggle('active');
-                // Update preview (in a real app, this would update the avatar image)
-                updatePreview();
-            });
-        });
-
-        function updatePreview() {
-            const style = document.querySelector('.style-option.active[data-style]')?.dataset.style || 'avataaars';
-            const skinTone = document.querySelector('.skin-tone.active')?.dataset.tone || 'light';
-            const hairStyle = document.querySelector('.style-option.active[data-style^="hair"]')?.dataset.style || 'short';
-            const hairColor = document.querySelector('.color-option.active')?.dataset.color || 'black';
-            const feature = document.querySelector('.style-option.active[data-feature]')?.dataset.feature || 'smile';
-            const accessory = document.querySelector('.accessory-option.active')?.dataset.accessory || 'none';
-
-            // In a real implementation, this would generate a custom avatar URL
-            const avatarUrl = `https://api.dicebear.com/7.x/${style}/svg?seed=${Math.random()}`;
-            document.getElementById('avatar-preview').src = avatarUrl;
-        }
-
-        document.querySelector('.save-avatar').addEventListener('click', function() {
-            // In a real app, this would save the avatar configuration
-            alert('Avatar saved!');
-        });
-
-        document.querySelector('.reset-avatar').addEventListener('click', function() {
-            // Reset all selections
-            document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
-            // Reset preview to default
-            document.getElementById('avatar-preview').src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia';
-        });
-
-        // Add style switching functionality
-        document.querySelectorAll('.style-option[data-style]').forEach(option => {
-            option.addEventListener('click', function() {
-                if (this.parentElement.classList.contains('style-options')) {
-                    // For main style options
-                    document.querySelectorAll('.style-option[data-style]').forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-                    // Update preview with new style
-                    updatePreview();
-                }
             });
         });
 
@@ -1112,11 +1411,9 @@
         // Add click handlers for channels
         document.querySelectorAll('.channel').forEach(channel => {
             channel.addEventListener('click', function() {
-                // Remove active class from all channels in the same collective
                 this.closest('.collective-channels').querySelectorAll('.channel').forEach(ch => {
                     ch.classList.remove('active');
                 });
-                // Add active class to clicked channel
                 this.classList.add('active');
             });
         });
@@ -1131,4 +1428,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
